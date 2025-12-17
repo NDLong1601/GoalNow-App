@@ -1,3 +1,3 @@
-enum AppButtonType { primary, secondary, disabled }
+enum AppButtonType { primary, secondary, danger, disabled, social }
 
 enum AppThemeMode { light, dark }

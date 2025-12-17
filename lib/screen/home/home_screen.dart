@@ -3,6 +3,8 @@ import 'package:goalnow_app/component/app_section.dart';
 import 'package:goalnow_app/component/app_text.dart';
 import 'package:goalnow_app/component/app_textstyle.dart';
 import 'package:goalnow_app/core/const/app_asset_path.dart';
+import 'package:goalnow_app/core/const/app_color.dart';
+import 'package:goalnow_app/routes/app_route.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -17,46 +19,55 @@ class _HomeScreenState extends State<HomeScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+          backgroundColor: AppColor.background,
           elevation: 0,
           centerTitle: true,
           leading: IconButton(
-            icon: Image.asset(AppAssetsPath.list),
-            onPressed: () => Navigator.pop(context),
+            onPressed: () {},
+            icon: ImageIcon(
+              AssetImage(AppAssetsPath.list),
+              color: AppColor.iconPrimary,
+              size: 24,
+            ),
           ),
-          title: AppText(text: "Home", style: AppTextstyle.semiboldTs16Black),
+
+          title: AppText(text: "GOAL NOW", style: AppTextStyle.h1),
           actions: [
             IconButton(
-              icon: Icon(
-                Icons.search,
-                color: Theme.of(context).iconTheme.color,
+              icon: ImageIcon(
+                AssetImage(AppAssetsPath.setting),
+                color: AppColor.iconPrimary,
+                size: 24,
               ),
-              onPressed: () {},
+              onPressed: () => Navigator.pushNamed(context, AppRoute.settings),
             ),
           ],
         ),
 
         body: SingleChildScrollView(
+          padding: EdgeInsets.symmetric(vertical: 6, horizontal: 12),
           child: Column(
             mainAxisAlignment: .start,
             crossAxisAlignment: .center,
             children: [
-              AppSectionTitle(
-                title: 'Tin tức nổi bật',
+              AppSectionHeader(
+                title: 'Featured Matches',
                 showAction: true,
-                actionText: 'More',
+                actionText: 'See More',
+                onTap: () => {Navigator.pushNamed(context, AppRoute.news)},
               ),
-              AppSectionTitle(
-                title: 'Các trận đấu đang diễn ra',
+
+              AppSectionHeader(
+                title: 'Hot News',
                 showAction: true,
-                actionText: 'More',
+                actionText: 'See More',
               ),
-              AppSectionTitle(
-                title: 'Lịch thi đấu sắp tới',
+              AppSectionHeader(
+                title: 'Popular Highlights',
                 showAction: true,
-                actionText: 'More',
+                actionText: 'See More',
               ),
-              AppSectionTitle(title: 'Đội bóng yêu thích của tôi'),
+              AppSectionHeader(title: 'Favourite Clubs'),
             ],
           ),
         ),

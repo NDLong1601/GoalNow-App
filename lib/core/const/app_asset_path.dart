@@ -19,7 +19,15 @@ class AppAssetsPath {
   static const String theme = 'assets/icons/ic_theme.png';
   static const String video = 'assets/icons/ic_video.png';
   static const String calendar = 'assets/icons/ic_calendar.png';
+  static const String facebook = 'assets/icons/ic_facebook.png';
+  static const String google = 'assets/icons/ic_google.png';
+  static const String apple = 'assets/icons/ic_apple.png';
 
   /// Image
-  static const String banner1 = 'assets/icons/ic_about.jpg';
+  static const String avatar = 'assets/images/img_avatar.jpg';
+  static const String banner1 = 'assets/images/img_banner1.jpg';
+  static const String logo = 'assets/images/img_logo.png';
+  static const String cover = 'assets/images/img_cover.jpg';
+  static const String cover1 = 'assets/images/img_cover.png';
+  static const String logoMarker = 'assets/images/img_logo_marker.png';
 }
