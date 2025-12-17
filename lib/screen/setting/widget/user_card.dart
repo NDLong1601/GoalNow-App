@@ -7,8 +7,8 @@ import 'package:goalnow_app/core/utils/format_helper.dart';
 import 'package:goalnow_app/routes/app_route.dart';
 import 'package:provider/provider.dart';
 
-class UserProfile extends StatelessWidget {
-  const UserProfile({super.key});
+class UserCard extends StatelessWidget {
+  const UserCard({super.key});
 
   @override
   Widget build(BuildContext context) {

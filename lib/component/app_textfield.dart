@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:goalnow_app/component/app_text.dart';
 import 'package:goalnow_app/component/app_textstyle.dart';
+import 'package:goalnow_app/core/const/app_color.dart';
 
 class AppTextField extends StatelessWidget {
   final String? label;
@@ -38,9 +39,9 @@ class AppTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const borderColor = Color(0xFF2A2A2A);
-    const fillColor = Color(0xFF141414);
-    const focusColor = Color(0xFF21D07A);
+    final borderColor = AppColor.divider;
+    final fillColor = AppColor.surfaceElevated;
+    final focusColor = AppColor.primary;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,9 +64,9 @@ class AppTextField extends StatelessWidget {
           style: const TextStyle(color: Colors.white),
           decoration: InputDecoration(
             hintText: hint,
-            hintStyle: const TextStyle(color: Colors.white38),
+            hintStyle: AppTextStyle.placeholder,
             prefixIcon: prefixIcon != null
-                ? Icon(prefixIcon, color: Colors.white54)
+                ? Icon(prefixIcon, color: AppColor.iconSecondary)
                 : null,
             suffixIcon: suffix,
             filled: true,
@@ -77,11 +78,11 @@ class AppTextField extends StatelessWidget {
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
-              borderSide: const BorderSide(color: borderColor),
+              borderSide: BorderSide(color: borderColor),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
-              borderSide: const BorderSide(color: focusColor, width: 1.2),
+              borderSide: BorderSide(color: focusColor, width: 1.2),
             ),
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
@@ -124,10 +125,8 @@ class _AppPasswordFieldState extends State<AppPasswordField> {
 
   @override
   Widget build(BuildContext context) {
-    const borderColor = Color(0xFF2A2A2A);
-    const fillColor = Color(0xFF141414);
-    const focusColor = Color(0xFF21D07A);
-
+    final borderColor = AppColor.divider;
+    final fillColor = AppColor.surfaceElevated;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -143,15 +142,15 @@ class _AppPasswordFieldState extends State<AppPasswordField> {
           style: const TextStyle(color: Colors.white),
           decoration: InputDecoration(
             hintText: widget.hint ?? 'Enter your password',
-            hintStyle: const TextStyle(color: Colors.white38),
-            prefixIcon: const Icon(Icons.lock_outline, color: Colors.white54),
+            hintStyle: AppTextStyle.placeholder,
+            prefixIcon: const Icon(Icons.lock_outline, color: AppColor.iconSecondary),
             suffixIcon: IconButton(
               splashRadius: 18,
               icon: Icon(
                 _obscure
                     ? Icons.visibility_off_outlined
                     : Icons.visibility_outlined,
-                color: Colors.white54,
+                color: AppColor.iconSecondary,
               ),
               onPressed: () {
                 setState(() {
@@ -167,11 +166,11 @@ class _AppPasswordFieldState extends State<AppPasswordField> {
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
-              borderSide: const BorderSide(color: borderColor),
+              borderSide: BorderSide(color: borderColor),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
-              borderSide: const BorderSide(color: focusColor, width: 1.2),
+              borderSide: BorderSide(color: borderColor, width: 1.2),
             ),
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),

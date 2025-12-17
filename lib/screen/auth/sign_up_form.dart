@@ -130,7 +130,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 agreeTerms = v ?? false;
                               });
                             },
-                            activeColor: const Color(0xFF21D07A),
+                            activeColor: AppColor.primary,
                           ),
                           Expanded(
                             child: Text(

@@ -144,7 +144,7 @@ class SideMenuContent extends StatelessWidget {
         width: width,
         height: double.infinity,
         padding: const EdgeInsets.fromLTRB(20, 40, 20, 20),
-        color: const Color(0xFF0B0B0B),
+        color: AppColor.background,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

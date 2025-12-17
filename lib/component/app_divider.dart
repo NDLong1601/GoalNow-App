@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goalnow_app/component/app_textstyle.dart';
 import 'package:goalnow_app/core/const/app_color.dart';
 
 class AppDivider extends StatelessWidget {
@@ -24,16 +25,16 @@ class OrDivider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: const [
-        Expanded(child: Divider(color: Colors.white60)),
+      children: [
+        Expanded(child: Divider(color: AppColor.textMuted)),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Text(
             'or sign in using',
-            style: TextStyle(color: AppColor.white, fontSize: 12),
+            style: AppTextStyle.bodySmall.copyWith(color: AppColor.white),
           ),
         ),
-        Expanded(child: Divider(color: Colors.white60)),
+        Expanded(child: Divider(color: AppColor.textMuted)),
       ],
     );
   }

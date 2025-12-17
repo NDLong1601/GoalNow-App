@@ -129,9 +129,9 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                   ),
                   margin: EdgeInsets.symmetric(vertical: 20, horizontal: 24),
                   decoration: BoxDecoration(
-                    color: AppColor.iconSecondary,
+                    color: AppColor.surface,
                     borderRadius: BorderRadius.circular(16),
-                    border: BoxBorder.all(style: BorderStyle.solid),
+                    border: Border.all(color: AppColor.divider),
                   ),
                   child: AppText(
                     text:

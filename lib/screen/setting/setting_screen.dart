@@ -37,7 +37,7 @@ class _SettingScreenState extends State<SettingScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               AppDivider(),
-              UserProfile(),
+              UserCard(),
               const SizedBox(height: 24),
               SectionTitle(title: 'Notification Settings'),
               SettingTile(

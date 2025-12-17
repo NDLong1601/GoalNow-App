@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goalnow_app/component/app_textstyle.dart';
 import 'package:goalnow_app/core/const/app_color.dart';
 import 'package:goalnow_app/core/enum/enum.dart';
 import 'package:goalnow_app/core/extension/context_extension.dart';
@@ -138,9 +139,7 @@ class AppButton extends StatelessWidget {
 
         Text(
           text ?? '',
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w600,
+          style: AppTextStyle.buttonPrimary.copyWith(
             color: textColor,
           ),
         ),
@@ -213,7 +212,7 @@ _ButtonStyle _resolveStyle({
 
     case AppButtonType.danger:
       return const _ButtonStyle(
-        backgroundColor: Color(0xFFFF3B30),
+        backgroundColor: AppColor.live,
         textColor: Colors.white,
         borderColor: Colors.transparent,
       );
