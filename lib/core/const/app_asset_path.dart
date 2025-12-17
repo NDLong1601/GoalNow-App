@@ -22,9 +22,10 @@ class AppAssetsPath {
   static const String facebook = 'assets/icons/ic_facebook.png';
   static const String google = 'assets/icons/ic_google.png';
   static const String apple = 'assets/icons/ic_apple.png';
+  static const String camera = 'assets/icons/ic_camera.png';
 
   /// Image
-  static const String avatar = 'assets/images/img_avatar.jpg';
+  static const String avatarDefault = 'assets/images/img_avatar.jpg';
   static const String banner1 = 'assets/images/img_banner1.jpg';
   static const String logo = 'assets/images/img_logo.png';
   static const String cover = 'assets/images/img_cover.jpg';

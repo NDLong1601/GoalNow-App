@@ -32,7 +32,7 @@ class AppButton extends StatelessWidget {
   /// Padding override
   final EdgeInsetsGeometry? padding;
 
-  /// Color override 
+  /// Color override
   final Color? backgroundColorOverride;
   final Color? borderColorOverride;
   final Color? textColorOverride;
@@ -82,18 +82,13 @@ class AppButton extends StatelessWidget {
 
     final bool isDisabled = type == AppButtonType.disabled;
 
-    final Color bgColor =
-        backgroundColorOverride ?? baseStyle.backgroundColor;
-    final Color brColor =
-        borderColorOverride ?? baseStyle.borderColor;
-    final Color txtColor =
-        textColorOverride ?? baseStyle.textColor;
+    final Color bgColor = backgroundColorOverride ?? baseStyle.backgroundColor;
+    final Color brColor = borderColorOverride ?? baseStyle.borderColor;
+    final Color txtColor = textColorOverride ?? baseStyle.textColor;
 
     final OutlinedBorder shape = isCircle
         ? const CircleBorder()
-        : RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(radius),
-          );
+        : RoundedRectangleBorder(borderRadius: BorderRadius.circular(radius));
 
     return SizedBox(
       height: height ?? 52 / 812 * context.sh,
@@ -105,13 +100,11 @@ class AppButton extends StatelessWidget {
           backgroundColor: bgColor,
           side: BorderSide(color: brColor, width: borderWidth),
           shape: shape,
-          padding: padding ??
+          padding:
+              padding ??
               (isCircle
                   ? EdgeInsets.zero
-                  : const EdgeInsets.symmetric(
-                      horizontal: 14,
-                      vertical: 14,
-                    )),
+                  : const EdgeInsets.symmetric(horizontal: 14, vertical: 14)),
           disabledBackgroundColor: bgColor,
           disabledForegroundColor: txtColor,
         ),
@@ -180,11 +173,7 @@ class AppButton extends StatelessWidget {
 
     // Material icon
     if (icon != null) {
-      return Icon(
-        icon,
-        size: iconSize,
-        color: color,
-      );
+      return Icon(icon, size: iconSize, color: color);
     }
 
     return const SizedBox.shrink();

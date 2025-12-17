@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:goalnow_app/component/app_textstyle.dart';
-import 'package:goalnow_app/core/const/app_asset_path.dart';
 import 'package:goalnow_app/core/const/app_color.dart';
+import 'package:goalnow_app/core/utils/avatar_helper.dart';
 import 'package:goalnow_app/provider/user_provider.dart';
+import 'package:goalnow_app/core/utils/format_helper.dart';
+import 'package:goalnow_app/routes/app_route.dart';
 import 'package:provider/provider.dart';
 
 class UserProfile extends StatelessWidget {
@@ -16,28 +18,31 @@ class UserProfile extends StatelessWidget {
       return const SizedBox.shrink();
     }
 
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: AppColor.surface,
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Row(
-        children: [
-          CircleAvatar(
-            radius: 24,
-            backgroundImage: AssetImage(AppAssetsPath.logo),
-          ),
-          const SizedBox(width: 12),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(user.name, style: AppTextStyle.h3),
-              const SizedBox(height: 4),
-              Text(user.email, style: AppTextStyle.bodySmall),
-            ],
-          ),
-        ],
+    return InkWell(
+      onTap: () => {Navigator.pushNamed(context, AppRoute.profile)},
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: AppColor.surface,
+          borderRadius: BorderRadius.circular(12),
+        ),
+        child: Row(
+          children: [
+            CircleAvatar(
+              radius: 24,
+              backgroundImage: resolveAvatar(user.avatarUrl),
+            ),
+            const SizedBox(width: 12),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(user.name, style: AppTextStyle.h3),
+                const SizedBox(height: 4),
+                Text(formatEmail(user.email), style: AppTextStyle.bodySmall),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

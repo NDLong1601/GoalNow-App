@@ -180,12 +180,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   void _onSubmit() {
-  AuthController.signUp(
-    context: context,
-    formKey: _formKey,
-    name: nameCtrl.text.trim(),
-    email: emailCtrl.text.trim(),
-  );
-}
-
+    AuthController.signUp(
+      context: context,
+      formKey: _formKey,
+      name: nameCtrl.text,
+      email: emailCtrl.text,
+      password: passwordCtrl.text,
+    );
+  }
 }

@@ -9,15 +9,21 @@ class AuthController {
     required GlobalKey<FormState> formKey,
     required String name,
     required String email,
+    required String password,
   }) {
     final form = formKey.currentState;
-
     if (form == null || !form.validate()) return;
+    
+    final userProvider = context.read<UserProvider>();
+    final navigator = Navigator.of(context);
 
-    context.read<UserProvider>().setUser(name: name, email: email);
+    userProvider.setUser(
+      name: name.trim(),
+      email: email.trim(),
+      password: password.trim(),
+    );
 
-    Navigator.pushReplacementNamed(
-      context,
+    navigator.pushReplacementNamed(
       AppRoute.bottomTab,
       arguments: {
         'showSuccess': true,
@@ -26,3 +32,4 @@ class AuthController {
     );
   }
 }
+

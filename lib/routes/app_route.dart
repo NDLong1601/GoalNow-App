@@ -6,6 +6,10 @@ import 'package:goalnow_app/screen/favourites/favourites_screen.dart';
 import 'package:goalnow_app/screen/highlight/hightlight_screen.dart';
 import 'package:goalnow_app/screen/home/home_screen.dart';
 import 'package:goalnow_app/screen/news/news_screen.dart';
+import 'package:goalnow_app/screen/profile/change_password_screen.dart';
+import 'package:goalnow_app/screen/profile/edit_email_screen.dart';
+import 'package:goalnow_app/screen/profile/edit_name_screen.dart';
+import 'package:goalnow_app/screen/profile/profile_screen.dart';
 import 'package:goalnow_app/screen/setting/setting_screen.dart';
 
 class AppRoute {
@@ -18,6 +22,10 @@ class AppRoute {
   static const String signIn = '/sign_in';
   static const String signUp = '/sign_up';
   static const String auth = '/auth';
+  static const String profile = '/profile';
+  static const String editName = '/edit-name';
+  static const String editEmail = '/edit-email';
+  static const String changePass = '/change-password';
 
   Map<String, Widget Function(BuildContext)> routes = <String, WidgetBuilder>{
     AppRoute.home: (context) => const HomeScreen(),
@@ -28,5 +36,9 @@ class AppRoute {
     AppRoute.bottomTab: (context) => const BottomTab(),
     AppRoute.signIn: (context) => const SignInScreen(),
     AppRoute.signUp: (context) => const SignUpScreen(),
+    AppRoute.profile: (context) => const ProfileScreen(),
+    AppRoute.editName: (context) => const EditNameScreen(),
+    AppRoute.editEmail: (context) => const EditEmailScreen(),
+    AppRoute.changePass: (context) => const ChangePasswordScreen(),
   };
 }

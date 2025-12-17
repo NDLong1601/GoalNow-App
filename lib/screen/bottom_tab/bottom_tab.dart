@@ -85,16 +85,16 @@ class _BottomTabState extends State<BottomTab> {
 
         items: [
           _buildItem(index: 0, iconPath: AppAssetsPath.home, label: 'Home'),
-          _buildItem(index: 1, iconPath: AppAssetsPath.news, label: 'Matchs'),
-          _buildItem(index: 2, iconPath: AppAssetsPath.video, label: 'News'),
+          _buildItem(index: 1, iconPath: AppAssetsPath.ball, label: 'Matchs'),
+          _buildItem(index: 2, iconPath: AppAssetsPath.news, label: 'News'),
           _buildItem(
             index: 3,
-            iconPath: AppAssetsPath.favourites,
+            iconPath: AppAssetsPath.video,
             label: 'Highlights',
           ),
           _buildItem(
             index: 4,
-            iconPath: AppAssetsPath.setting,
+            iconPath: AppAssetsPath.favourites,
             label: 'Favorites',
           ),
         ],
