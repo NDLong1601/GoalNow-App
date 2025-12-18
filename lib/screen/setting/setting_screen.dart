@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:goalnow_app/component/app_button.dart';
 import 'package:goalnow_app/component/app_divider.dart';
+import 'package:goalnow_app/component/app_scaffold.dart';
 import 'package:goalnow_app/component/app_text.dart';
 import 'package:goalnow_app/component/app_textstyle.dart';
 import 'package:goalnow_app/core/enum/enum.dart';
@@ -27,7 +28,8 @@ class _SettingScreenState extends State<SettingScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
+      child: AppScaffold(
+        overlayOpacity: 0.85,
         appBar: AppBar(
           centerTitle: true,
           title: AppText(text: 'Setting', style: AppTextStyle.appBarTitle),
@@ -38,7 +40,6 @@ class _SettingScreenState extends State<SettingScreen> {
             children: [
               AppDivider(),
               UserCard(),
-              const SizedBox(height: 24),
               SectionTitle(title: 'Notification Settings'),
               SettingTile(
                 title: 'Match Reminders',

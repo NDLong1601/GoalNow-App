@@ -20,7 +20,8 @@ class AppDivider extends StatelessWidget {
 }
 
 class OrDivider extends StatelessWidget {
-  const OrDivider({super.key});
+  final String text;
+  const OrDivider({super.key, this.text = 'or sign in using'});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,7 @@ class OrDivider extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8),
           child: Text(
-            'or sign in using',
+            text, // Use the parameter here
             style: AppTextStyle.bodySmall.copyWith(color: AppColor.white),
           ),
         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goalnow_app/component/app_navigation_item.dart';
+import 'package:goalnow_app/component/app_scaffold.dart';
 import 'package:goalnow_app/component/app_text.dart';
 import 'package:goalnow_app/component/app_textstyle.dart';
 import 'package:goalnow_app/core/const/app_color.dart';
@@ -54,7 +55,8 @@ class ProfileScreen extends StatelessWidget {
 
     if (user == null) return const SizedBox.shrink();
 
-    return Scaffold(
+    return AppScaffold(
+      overlayOpacity: 0.85,
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         centerTitle: true,

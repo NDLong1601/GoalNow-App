@@ -17,38 +17,17 @@ class ProfileHeader extends StatelessWidget {
 
     return Column(
       children: [
-        Stack(
-          alignment: Alignment.center,
-          children: [
-            Container(
-              width: 104,
-              height: 104,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(color: AppColor.primary, width: 2),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(4),
-                child: CircleAvatar(
-                  backgroundImage: resolveAvatar(user.avatarUrl),
-                ),
-              ),
-            ),
-
-            Positioned(
-              bottom: 6,
-              right: 6,
-              child: Container(
-                width: 18,
-                height: 18,
-                decoration: BoxDecoration(
-                  color: AppColor.primary,
-                  shape: BoxShape.circle,
-                  border: Border.all(color: AppColor.background, width: 2),
-                ),
-              ),
-            ),
-          ],
+        Container(
+          width: 150,
+          height: 150,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(color: AppColor.primary, width: 2),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(4),
+            child: CircleAvatar(backgroundImage: resolveAvatar(user.avatarUrl)),
+          ),
         ),
 
         const SizedBox(height: 12),
@@ -56,7 +35,7 @@ class ProfileHeader extends StatelessWidget {
           text: 'Change avatar',
           type: AppButtonType.primary,
           height: 50,
-          width: 170,
+          width: 200,
           prefixIconPath: AppAssetsPath.camera,
           onPressed: () {},
         ),

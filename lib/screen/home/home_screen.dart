@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goalnow_app/component/app_scaffold.dart';
 import 'package:goalnow_app/component/app_section.dart';
 import 'package:goalnow_app/component/app_text.dart';
 import 'package:goalnow_app/component/app_textstyle.dart';
@@ -18,7 +19,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(
+      child: AppScaffold(
+        overlayOpacity: 0.85,
         appBar: AppBar(
           backgroundColor: AppColor.background,
           elevation: 0,
@@ -56,18 +58,26 @@ class _HomeScreenState extends State<HomeScreen> {
                 title: 'Featured Matches',
                 showAction: true,
                 actionText: 'See More',
-                onTap: () => {Navigator.pushNamed(context, AppRoute.news)},
+                onTap: () => {
+                  Navigator.pushReplacementNamed(context, AppRoute.news),
+                },
               ),
 
               AppSectionHeader(
                 title: 'Hot News',
                 showAction: true,
                 actionText: 'See More',
+                onTap: () => {
+                  Navigator.pushReplacementNamed(context, AppRoute.news),
+                },
               ),
               AppSectionHeader(
                 title: 'Popular Highlights',
                 showAction: true,
                 actionText: 'See More',
+                onTap: () => {
+                  Navigator.pushReplacementNamed(context, AppRoute.highlight),
+                },
               ),
               AppSectionHeader(title: 'Favourite Clubs', showAction: false),
             ],
@@ -122,7 +132,7 @@ class MenuItem extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 14),
       child: AppText(
         text: title.toUpperCase(),
-        style: AppTextStyle.boldTs14White.copyWith(letterSpacing: 0.5),
+        style: AppTextStyle.inputLabel.copyWith(letterSpacing: 0.5),
       ),
     );
   }

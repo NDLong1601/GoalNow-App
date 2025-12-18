@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goalnow_app/component/app_button.dart';
+import 'package:goalnow_app/component/app_scaffold.dart';
 import 'package:goalnow_app/component/app_text.dart';
 import 'package:goalnow_app/component/app_textfield.dart';
 import 'package:goalnow_app/component/app_textstyle.dart';
@@ -62,7 +63,8 @@ class _EditEmailScreenState extends State<EditEmailScreen> {
       onPopInvokedWithResult: (_, _) {
         FocusScope.of(context).unfocus();
       },
-      child: Scaffold(
+      child: AppScaffold(
+        overlayOpacity: 0.85,
         appBar: AppBar(
           centerTitle: true,
           title: AppText(text: 'Edit Email', style: AppTextStyle.appBarTitle),

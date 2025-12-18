@@ -218,7 +218,7 @@ class AppTextStyle {
     color: AppColor.primary,
   );
 
-    static const TextStyle boldTs14White = TextStyle(
+    static const TextStyle inputLabel = TextStyle(
     fontFamily: _font,
     fontSize: 14,
     height: 18 / 14,

@@ -21,16 +21,50 @@ class UserCard extends StatelessWidget {
     return InkWell(
       onTap: () => {Navigator.pushNamed(context, AppRoute.profile)},
       child: Container(
+        margin: EdgeInsets.symmetric(vertical: 16, horizontal: 20),
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: AppColor.surface,
           borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            width: 2,
+            color: AppColor.primary,
+            strokeAlign: CircularProgressIndicator.strokeAlignCenter,
+          ),
         ),
         child: Row(
           children: [
-            CircleAvatar(
-              radius: 24,
-              backgroundImage: resolveAvatar(user.avatarUrl),
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(color: AppColor.primary, width: 2),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(1),
+                    child: CircleAvatar(
+                      backgroundImage: resolveAvatar(user.avatarUrl),
+                    ),
+                  ),
+                ),
+
+                Positioned(
+                  bottom: 1,
+                  right: 1,
+                  child: Container(
+                    width: 18,
+                    height: 18,
+                    decoration: BoxDecoration(
+                      color: AppColor.primary,
+                      shape: BoxShape.circle,
+                      border: Border.all(color: AppColor.background, width: 2),
+                    ),
+                  ),
+                ),
+              ],
             ),
             const SizedBox(width: 12),
             Column(

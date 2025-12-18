@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:goalnow_app/component/app_button.dart';
 import 'package:goalnow_app/component/app_divider.dart';
 import 'package:goalnow_app/component/app_rich_text.dart';
+import 'package:goalnow_app/component/app_scaffold.dart';
 import 'package:goalnow_app/component/app_text.dart';
 import 'package:goalnow_app/component/app_textfield.dart';
 import 'package:goalnow_app/component/app_textstyle.dart';
@@ -9,7 +10,6 @@ import 'package:goalnow_app/core/const/app_asset_path.dart';
 import 'package:goalnow_app/core/const/app_color.dart';
 import 'package:goalnow_app/core/enum/enum.dart';
 import 'package:goalnow_app/routes/app_route.dart';
-import 'package:goalnow_app/screen/auth/widget/auth_background.dart';
 import 'package:goalnow_app/screen/auth/widget/social_button.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -35,9 +35,8 @@ class _SignInScreenState extends State<SignInScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: AuthBackground(
-        child: LayoutBuilder(
+    return AppScaffold(
+      body: LayoutBuilder(
           builder: (context, constraints) {
             return SingleChildScrollView(
               padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -163,7 +162,6 @@ class _SignInScreenState extends State<SignInScreen> {
             );
           },
         ),
-      ),
     );
   }
 }

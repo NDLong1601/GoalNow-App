@@ -47,7 +47,7 @@ class AppTextField extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (label != null) ...[
-          AppText(text: label!, style: AppTextStyle.boldTs14White),
+          AppText(text: label!, style: AppTextStyle.inputLabel),
           const SizedBox(height: 8),
         ],
         TextFormField(
@@ -86,11 +86,11 @@ class AppTextField extends StatelessWidget {
             ),
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
-              borderSide: const BorderSide(color: Colors.redAccent),
+              borderSide: const BorderSide(color: AppColor.live),
             ),
             focusedErrorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
-              borderSide: const BorderSide(color: Colors.redAccent, width: 1.2),
+              borderSide: const BorderSide(color: AppColor.live, width: 1.2),
             ),
           ),
         ),
@@ -131,7 +131,7 @@ class _AppPasswordFieldState extends State<AppPasswordField> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         if (widget.label != null) ...[
-          AppText(text: widget.label!, style: AppTextStyle.boldTs14White),
+          AppText(text: widget.label!, style: AppTextStyle.inputLabel),
           const SizedBox(height: 8),
         ],
         TextFormField(
@@ -143,7 +143,10 @@ class _AppPasswordFieldState extends State<AppPasswordField> {
           decoration: InputDecoration(
             hintText: widget.hint ?? 'Enter your password',
             hintStyle: AppTextStyle.placeholder,
-            prefixIcon: const Icon(Icons.lock_outline, color: AppColor.iconSecondary),
+            prefixIcon: const Icon(
+              Icons.lock_outline,
+              color: AppColor.iconSecondary,
+            ),
             suffixIcon: IconButton(
               splashRadius: 18,
               icon: Icon(
@@ -170,15 +173,15 @@ class _AppPasswordFieldState extends State<AppPasswordField> {
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
-              borderSide: BorderSide(color: borderColor, width: 1.2),
+              borderSide: BorderSide(color: AppColor.primary, width: 1.2),
             ),
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
-              borderSide: const BorderSide(color: Colors.redAccent),
+              borderSide: const BorderSide(color: AppColor.live),
             ),
             focusedErrorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(14),
-              borderSide: const BorderSide(color: Colors.redAccent, width: 1.2),
+              borderSide: const BorderSide(color: AppColor.live, width: 1.2),
             ),
           ),
         ),
