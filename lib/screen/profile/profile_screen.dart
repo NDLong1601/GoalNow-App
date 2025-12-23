@@ -85,7 +85,7 @@ class ProfileScreen extends StatelessWidget {
 
             AppNavigationItem(
               title: 'Email',
-              subtitle: formatEmail(user.email),
+              subtitle: FormatHelper.formatEmail(user.email),
               onTap: () async {
                 await _openEditAndShowSuccess(
                   context: context,

@@ -72,7 +72,10 @@ class UserCard extends StatelessWidget {
               children: [
                 Text(user.name, style: AppTextStyle.h3),
                 const SizedBox(height: 4),
-                Text(formatEmail(user.email), style: AppTextStyle.bodySmall),
+                Text(
+                  FormatHelper.formatEmail(user.email),
+                  style: AppTextStyle.bodySmall,
+                ),
               ],
             ),
           ],
