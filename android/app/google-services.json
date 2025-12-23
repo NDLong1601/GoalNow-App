@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "506978249762",
+    "project_id": "goalnow-c9d7a",
+    "storage_bucket": "goalnow-c9d7a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:506978249762:android:8d39456fa3c9e82ca02e7b",
+        "android_client_info": {
+          "package_name": "com.example.goalnow_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaDwR0KUMU08SodS1crRlR8V33mwoV2Jo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
