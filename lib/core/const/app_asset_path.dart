@@ -31,4 +31,26 @@ class AppAssetsPath {
   static const String cover = 'assets/images/img_cover.jpg';
   static const String cover1 = 'assets/images/img_cover.png';
   static const String logoMarker = 'assets/images/img_logo_marker.png';
+
+  // Image Logo
+  static const String asrenal = 'assets/images/logo-arsenal.png';
+  static const String chelsea = 'assets/images/logo-chelsea.png';
+  static const String wolverhamton = 'assets/images/logo_wolverhamton.png';
+  static const String westham = 'assets/images/logo_westham.png';
+  static const String tottenham = 'assets/images/logo_tottenham.png';
+  static const String sunderland = 'assets/images/logo_sunderland.png';
+  static const String nottingham = 'assets/images/logo_nottingham.png';
+  static const String newcastle = 'assets/images/logo_newcastle.png';
+  static const String mci = 'assets/images/logo_mci.png';
+  static const String manUtd = 'assets/images/logo_man_utd.png';
+  static const String liverpool = 'assets/images/logo_liverpool.png';
+  static const String leeds = 'assets/images/logo_leeds.png';
+  static const String fullham = 'assets/images/logo_fullham.png';
+  static const String everton = 'assets/images/logo_everton.png';
+  static const String cry = 'assets/images/logo_crystal_palace.png';
+  static const String burnley = 'assets/images/logo_burnley.png';
+  static const String brighton = 'assets/images/logo_brighton.png';
+  static const String brentford = 'assets/images/logo_brentford.png';
+  static const String bour = 'assets/images/logo_bournemouth.png';
+  static const String aston = 'assets/images/img_logo_astolvila.png';
 }

@@ -57,6 +57,7 @@ dependencies:
   flutter_slidable: ^4.0.3
   video_player: ^2.10.1
   cupertino_icons: ^1.0.8
+  add_2_calendar: ^3.0.1
 
 dev_dependencies:
   flutter_test:

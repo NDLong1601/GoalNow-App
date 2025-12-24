@@ -26,7 +26,7 @@ class AppNewsCard extends StatelessWidget {
         margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         padding: EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: AppColor.surfaceElevated,
+          color: AppColor.surface,
           borderRadius: BorderRadius.circular(16),
           border: Border.all(color: AppColor.primary.withValues(alpha: 0.8)),
         ),
@@ -62,6 +62,7 @@ class AppNewsCard extends StatelessWidget {
                   AppText(
                     text: title,
                     maxLines: 2,
+                    textAlign: TextAlign.start,
                     textOverflow: TextOverflow.ellipsis,
                     style: AppTextStyle.cardTitle.copyWith(
                       fontWeight: FontWeight.w700,
@@ -109,10 +110,10 @@ class AppNewsVerticalCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: onTap,
       child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        margin: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         decoration: BoxDecoration(
           color: AppColor.surface,
           borderRadius: BorderRadius.circular(18),
@@ -123,9 +124,7 @@ class AppNewsVerticalCard extends StatelessWidget {
           children: [
             /// Image + title overlay
             ClipRRect(
-              borderRadius: const BorderRadius.vertical(
-                top: Radius.circular(18),
-              ),
+              borderRadius: BorderRadius.vertical(top: Radius.circular(18)),
               child: Stack(
                 children: [
                   Image.network(
@@ -144,7 +143,7 @@ class AppNewsVerticalCard extends StatelessWidget {
                           end: Alignment.bottomCenter,
                           colors: [
                             Colors.transparent,
-                            Colors.black.withValues(alpha: 0.75),
+                            Colors.black.withValues(alpha: 0.65),
                           ],
                         ),
                       ),
@@ -158,6 +157,7 @@ class AppNewsVerticalCard extends StatelessWidget {
                     bottom: 16,
                     child: AppText(
                       text: title,
+                      textAlign: TextAlign.start,
                       maxLines: 2,
                       textOverflow: TextOverflow.ellipsis,
                       style: AppTextStyle.h3.copyWith(color: AppColor.white),
@@ -186,7 +186,7 @@ class AppNewsVerticalCard extends StatelessWidget {
                       AppText(
                         text: '• $timeAgo',
                         style: AppTextStyle.bodySmall.copyWith(
-                          color: AppColor.white.withValues(alpha: 0.6),
+                          color: AppColor.white,
                         ),
                       ),
                     ],
@@ -212,13 +212,13 @@ class AppNewsVerticalCard extends StatelessWidget {
                       const Icon(
                         Icons.chat_bubble_outline,
                         size: 16,
-                        color: Colors.white54,
+                        color: Colors.white,
                       ),
                       const SizedBox(width: 6),
                       AppText(
                         text: '$commentCount Comments',
                         style: AppTextStyle.bodySmall.copyWith(
-                          color: AppColor.white.withValues(alpha: 0.6),
+                          color: AppColor.white,
                         ),
                       ),
                     ],

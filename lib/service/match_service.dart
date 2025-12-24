@@ -1,6 +1,6 @@
 import 'package:goalnow_app/core/network/api_client.dart';
 import 'package:goalnow_app/core/network/api_endpoint.dart';
-import 'package:goalnow_app/model/match.dart';
+import 'package:goalnow_app/model/match/match.dart';
 
 class MatchService {
   final ApiClient _client;

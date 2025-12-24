@@ -1,5 +1,5 @@
-import 'package:goalnow_app/model/match_status.dart';
-import 'package:goalnow_app/model/match_team.dart';
+import 'package:goalnow_app/model/match/match_status.dart';
+import 'package:goalnow_app/model/match/match_team.dart';
 
 class MatchModel {
   final int id;

@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class FormatHelper {
   // Format Datetime
   static String timeAgo(DateTime time) {
@@ -42,5 +44,35 @@ class FormatHelper {
     return '${date.year}'
         '${date.month.toString().padLeft(2, '0')}'
         '${date.day.toString().padLeft(2, '0')}';
+  }
+
+  /// Format tên cầu thủ cho lineup
+  /// VD: "Senne Lammens" -> "Se.Lammens"
+  static String formatPlayerName(String fullName, {int firstLetters = 2}) {
+    final name = fullName.trim();
+
+    if (name.isEmpty) return '';
+
+    final parts = name.split(RegExp(r'\s+'));
+
+    // Chỉ có 1 từ → giữ nguyên
+    if (parts.length == 1) {
+      return name;
+    }
+
+    final first = parts.first;
+    final last = parts.last;
+
+    final prefix = first.length <= firstLetters
+        ? first
+        : first.substring(0, firstLetters);
+
+    return '$prefix.$last';
+  }
+
+  static Color ratingColor(double rating) {
+    if (rating >= 7.5) return const Color(0xFF2ECC71);
+    if (rating >= 6.5) return const Color(0xFFF1C40F);
+    return Colors.white.withValues(alpha: 0.55);
   }
 }

@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:goalnow_app/component/app_team_logo.dart';
 import 'package:goalnow_app/component/app_text.dart';
 import 'package:goalnow_app/component/app_textstyle.dart';
 import 'package:goalnow_app/core/const/app_color.dart';
-import 'package:goalnow_app/model/match.dart';
+import 'package:goalnow_app/core/network/api_client.dart';
+import 'package:goalnow_app/model/match/match.dart';
+import 'package:goalnow_app/provider/match_stats_provider.dart';
+import 'package:goalnow_app/repository/match_stats_repository.dart';
 import 'package:goalnow_app/screen/match/match_detail_screen.dart';
+import 'package:goalnow_app/service/stats_service.dart';
+import 'package:provider/provider.dart';
 
 class AppMatchCard extends StatelessWidget {
   final MatchModel match;
@@ -40,62 +46,82 @@ class AppMatchCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bool canNavigate = isLive || match.status.finished;
+
     return InkWell(
       borderRadius: BorderRadius.circular(16),
-      onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (_) => MatchDetailScreen(match: match)),
-        );
-      },
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          color: AppColor.surface,
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: AppColor.primary.withValues(alpha: 0.6)),
-        ),
-        child: Column(
-          children: [
-            if (league.isNotEmpty)
-              Align(
-                alignment: Alignment.centerLeft,
-                child: AppText(
-                  text: league,
-                  maxLines: 2,
-                  style: AppTextStyle.bodySmall.copyWith(
-                    color: AppColor.white.withValues(alpha: 0.6),
+      onTap: canNavigate
+          ? () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => ChangeNotifierProvider(
+                    create: (_) => MatchStatsProvider(
+                      MatchStatsRepository(MatchStatsService(ApiClient())),
+                    )..fetchStats(match.id),
+                    child: MatchDetailScreen(match: match),
                   ),
                 ),
-              ),
-
-            const SizedBox(height: 12),
-
-            Row(
-              children: [
-                _team(name: homeName, logo: homeLogo, alignRight: false),
-
-                Column(
-                  children: [
-                    AppText(
-                      text: showScore ? '$homeScore - $awayScore' : statusText,
-                      style: AppTextStyle.h2,
+              );
+            }
+          : null,
+      child: Opacity(
+        opacity: canNavigate ? 1.0 : 0.65,
+        child: Container(
+          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: AppColor.surface,
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: AppColor.primary.withValues(alpha: 0.6)),
+          ),
+          child: Column(
+            children: [
+              /// League name (optional)
+              if (league.isNotEmpty)
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: AppText(
+                    text: league,
+                    maxLines: 2,
+                    style: AppTextStyle.bodySmall.copyWith(
+                      color: AppColor.white.withValues(alpha: 0.6),
                     ),
-                    const SizedBox(height: 6),
-                    if (showScore) _statusBadge(),
-                  ],
+                  ),
                 ),
 
-                _team(name: awayName, logo: awayLogo, alignRight: true),
-              ],
-            ),
-          ],
+              const SizedBox(height: 12),
+
+              Row(
+                children: [
+                  _team(name: homeName, logo: homeLogo, alignRight: false),
+
+                  Column(
+                    children: [
+                      AppText(
+                        text: showScore
+                            ? '$homeScore - $awayScore'
+                            : statusText,
+                        style: AppTextStyle.h2,
+                      ),
+                      const SizedBox(height: 6),
+
+                      /// Finished / Live → status badge
+                      if (showScore) _statusBadge(),
+                    ],
+                  ),
+
+                  _team(name: awayName, logo: awayLogo, alignRight: true),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 
+  // TEAM BLOCK
   Widget _team({
     required String name,
     required String logo,
@@ -107,39 +133,30 @@ class AppMatchCard extends StatelessWidget {
             ? MainAxisAlignment.end
             : MainAxisAlignment.start,
         children: [
-          if (!alignRight) _logo(logo),
+          if (!alignRight) TeamLogo(assetPath: logo, size: 24),
+
           const SizedBox(width: 8),
+
           Flexible(
             child: AppText(
               text: name,
-              maxLines: 1,
+              maxLines: 2,
+              textAlign: alignRight ? TextAlign.end : TextAlign.start,
               textOverflow: TextOverflow.ellipsis,
-              style: AppTextStyle.bodySmall,
+              style: AppTextStyle.bodySmall.copyWith(color: Colors.white),
             ),
           ),
-          if (alignRight) ...[const SizedBox(width: 8), _logo(logo)],
+
+          if (alignRight) ...[
+            const SizedBox(width: 8),
+            TeamLogo(assetPath: logo, size: 24),
+          ],
         ],
       ),
     );
   }
 
-  Widget _logo(String url) {
-    if (url.trim().isEmpty) {
-      return CircleAvatar(
-        radius: 14,
-        backgroundColor: AppColor.background,
-        child: const Icon(Icons.shield, size: 16),
-      );
-    }
-
-    return CircleAvatar(
-      radius: 14,
-      backgroundColor: AppColor.background,
-      backgroundImage: NetworkImage(url),
-      onBackgroundImageError: (_, _) {},
-    );
-  }
-
+  // STATUS BADGE (LIVE / FT)
   Widget _statusBadge() {
     final Color color = isLive ? Colors.red : Colors.white54;
 

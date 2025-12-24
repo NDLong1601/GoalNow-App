@@ -8,11 +8,11 @@ class ApiClient {
   Map<String, String> apiHeader = {
     'Content-Type': 'application/json',
     'x-rapidapi-host': 'free-api-live-football-data.p.rapidapi.com',
-    'x-rapidapi-key': '9c017ff99cmsh5fd9b3ead41068ep106e77jsnbf756e75c3d8',
+    'x-rapidapi-key': 'cf2adcc692msh18761dc23c1ca97p10b13djsne4a41a1e6fd7',
   };
 
   String apiHost = "free-api-live-football-data.p.rapidapi.com";
-  String apiKey = "9c017ff99cmsh5fd9b3ead41068ep106e77jsnbf756e75c3d8";
+  String apiKey = "cf2adcc692msh18761dc23c1ca97p10b13djsne4a41a1e6fd7";
 
   Future<Map<String, dynamic>> get(
     String path, {

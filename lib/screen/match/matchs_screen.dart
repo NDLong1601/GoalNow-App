@@ -10,7 +10,7 @@ import 'package:goalnow_app/component/app_text.dart';
 import 'package:goalnow_app/component/app_textstyle.dart';
 import 'package:goalnow_app/core/const/app_color.dart';
 
-import 'widget/match_list_view.dart';
+import 'widget/match_detail/match_detail_list_view.dart';
 
 class MatchsScreen extends StatefulWidget {
   const MatchsScreen({super.key});
@@ -30,12 +30,24 @@ class _MatchsScreenState extends State<MatchsScreen> {
     894202: 'UEFA Champions League',
     47: 'Premier League',
     87: 'La Liga',
+    77: 'World Cup',
+    54: 'Bundesliga',
+    73: 'Europa League',
+    53: 'Ligue 1',
+    55: 'Serie A',
+    132: 'Fa Cup',
   };
 
   static const Map<int, int> _leaguePriority = {
     47: 0, // Premier League
     87: 1, // La Liga
     894202: 2, // Champions League
+    77: 3,
+    54: 4,
+    73: 5,
+    53: 6,
+    55: 7,
+    132: 8,
   };
 
   @override
@@ -70,7 +82,26 @@ class _MatchsScreenState extends State<MatchsScreen> {
         children: [
           _buildTabs(),
           const SizedBox(height: 8),
-          Expanded(child: _buildContent()),
+          Expanded(
+            child: Consumer<MatchProvider>(
+              builder: (context, provider, _) {
+                if (provider.loading) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+
+                if (provider.error != null) {
+                  return Center(child: Text(provider.error!));
+                }
+
+                return MatchListView(
+                  tab: _currentTab,
+                  matches: provider.matches,
+                  leagueNameMap: _leagueNameMap,
+                  leaguePriority: _leaguePriority,
+                );
+              },
+            ),
+          ),
         ],
       ),
     );
@@ -122,27 +153,6 @@ class _MatchsScreenState extends State<MatchsScreen> {
       case MatchTab.upcoming:
         return 'Upcoming';
     }
-  }
-
-  Widget _buildContent() {
-    return Consumer<MatchProvider>(
-      builder: (context, provider, _) {
-        if (provider.loading) {
-          return const Center(child: CircularProgressIndicator());
-        }
-
-        if (provider.error != null) {
-          return Center(child: Text(provider.error!));
-        }
-
-        return MatchListView(
-          tab: _currentTab,
-          matches: provider.matches,
-          leagueNameMap: _leagueNameMap,
-          leaguePriority: _leaguePriority,
-        );
-      },
-    );
   }
 
   Future<void> _pickDate() async {

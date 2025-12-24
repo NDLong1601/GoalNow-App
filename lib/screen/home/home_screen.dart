@@ -6,7 +6,6 @@ import 'package:goalnow_app/component/app_textstyle.dart';
 import 'package:goalnow_app/core/const/app_asset_path.dart';
 import 'package:goalnow_app/core/const/app_color.dart';
 import 'package:goalnow_app/core/enum/enum.dart';
-import 'package:goalnow_app/core/extension/context_extension.dart';
 import 'package:goalnow_app/routes/app_route.dart';
 import 'package:goalnow_app/screen/home/widget/build_news.dart';
 import 'package:goalnow_app/screen/home/widget/side_menu_content.dart';
@@ -63,7 +62,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 // Navigator.pushReplacementNamed(context, AppRoute.matchs),
               },
             ),
-            
 
             // News
             AppSectionHeader(
@@ -72,10 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
               actionText: 'See More',
               onTap: () => {Navigator.pushNamed(context, AppRoute.news)},
             ),
-            SizedBox(
-              height: context.sh * 450 / 812,
-              child: Expanded(child: BuildNews()),
-            ),
+            Expanded(child: BuildNews()),
 
             // HightLights
             AppSectionHeader(

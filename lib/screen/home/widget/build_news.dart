@@ -27,7 +27,7 @@ class _BuildNewsState extends State<BuildNews> {
     return Consumer<NewsProvider>(
       builder: (context, provider, _) {
         if (provider.loading) {
-          return const CircularProgressIndicator();
+          return const Center(child: CircularProgressIndicator());
         }
 
         if (provider.error != null) {

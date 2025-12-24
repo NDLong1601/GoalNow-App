@@ -1,18 +1,18 @@
 import 'package:goalnow_app/core/enum/enum.dart';
 import 'package:goalnow_app/core/utils/date_helper.dart';
-import 'package:goalnow_app/model/match.dart';
+import 'package:goalnow_app/model/match/match.dart';
 
 class MatchGroupHelper {
   static List<MatchModel> filterByTab(List<MatchModel> list, MatchTab tab) {
     switch (tab) {
       case MatchTab.finished:
-        return list.where((m) => m.status.finished).toList();
+        return list.where((match) => match.status.finished).toList();
       case MatchTab.live:
         return list
-            .where((m) => m.status.started && !m.status.finished)
+            .where((match) => match.status.started && !match.status.finished)
             .toList();
       case MatchTab.upcoming:
-        return list.where((m) => !m.status.started).toList();
+        return list.where((match) => !match.status.started).toList();
     }
   }
 
@@ -22,11 +22,11 @@ class MatchGroupHelper {
     final Map<String, List<MatchModel>> map = {};
 
     for (final match in matches) {
-      final d = match.time;
+      final date = match.time;
       final key =
-          '${d.year.toString().padLeft(4, '0')}-'
-          '${d.month.toString().padLeft(2, '0')}-'
-          '${d.day.toString().padLeft(2, '0')}';
+          '${date.year.toString().padLeft(4, '0')}-'
+          '${date.month.toString().padLeft(2, '0')}-'
+          '${date.day.toString().padLeft(2, '0')}';
 
       map.putIfAbsent(key, () => []).add(match);
     }
@@ -34,8 +34,8 @@ class MatchGroupHelper {
     final sortedKeys = map.keys.toList()..sort();
     final Map<String, List<MatchModel>> sortedMap = {};
 
-    for (final k in sortedKeys) {
-      sortedMap[k] = map[k]!..sort((a, b) => a.time.compareTo(b.time));
+    for (final i in sortedKeys) {
+      sortedMap[i] = map[i]!..sort((a, b) => a.time.compareTo(b.time));
     }
 
     return sortedMap;

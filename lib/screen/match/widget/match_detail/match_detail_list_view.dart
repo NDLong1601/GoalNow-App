@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:goalnow_app/core/enum/enum.dart';
 import 'package:goalnow_app/core/utils/date_helper.dart';
-import 'package:goalnow_app/model/match.dart';
+import 'package:goalnow_app/core/utils/logo_helper.dart';
+import 'package:goalnow_app/core/utils/match_group_helper.dart';
+import 'package:goalnow_app/model/match/match.dart';
 import 'package:goalnow_app/component/app_match_card.dart';
 import 'package:goalnow_app/component/app_text.dart';
 import 'package:goalnow_app/component/app_textstyle.dart';
 import 'package:goalnow_app/core/const/app_color.dart';
-import '../helper/match_group_helper.dart';
 
 class MatchListView extends StatelessWidget {
   final MatchTab tab;
@@ -55,10 +56,10 @@ class MatchListView extends StatelessWidget {
                   isLive: tab == MatchTab.live,
                   isHighHeat: false,
                   homeName: match.home.name,
-                  homeLogo: '',
+                  homeLogo: LogoIconMapper.getLogo(match.home.name) ?? '',
                   homeScore: match.home.score,
                   awayName: match.away.name,
-                  awayLogo: '',
+                  awayLogo: LogoIconMapper.getLogo(match.away.name) ?? '',
                   awayScore: match.away.score,
                 ),
               ),

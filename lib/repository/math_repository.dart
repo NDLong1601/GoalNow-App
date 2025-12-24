@@ -1,4 +1,4 @@
-import 'package:goalnow_app/model/match.dart';
+import 'package:goalnow_app/model/match/match.dart';
 import 'package:goalnow_app/service/match_service.dart';
 
 class MatchRepository {
