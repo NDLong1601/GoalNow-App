@@ -80,6 +80,8 @@ class _MatchsScreenState extends State<MatchsScreen> {
       ),
       body: Column(
         children: [
+          const Divider(height: 1),
+          SizedBox(height: 8),
           _buildTabs(),
           const SizedBox(height: 8),
           Expanded(
@@ -124,6 +126,7 @@ class _MatchsScreenState extends State<MatchsScreen> {
                 decoration: BoxDecoration(
                   color: active ? AppColor.primary : Colors.transparent,
                   borderRadius: BorderRadius.circular(20),
+                  border: Border.all(color: AppColor.primaryDark, width: 1),
                 ),
                 child: Center(
                   child: AppText(
