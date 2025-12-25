@@ -13,7 +13,7 @@ import 'package:goalnow_app/screen/match/widget/line_up_tab/match_lineups.dart';
 import 'package:goalnow_app/screen/match/widget/match_detail/match_status.dart';
 import 'package:goalnow_app/screen/match/widget/statistics_tab/match_statistic.dart';
 import 'package:goalnow_app/screen/match/widget/match_detail/match_detail_tabbar.dart';
-import 'package:goalnow_app/service/lineup_service.dart';
+import 'package:goalnow_app/service/api/lineup_service.dart';
 import 'package:provider/provider.dart';
 
 class MatchDetailScreen extends StatefulWidget {

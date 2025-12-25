@@ -6,6 +6,7 @@ import 'package:goalnow_app/component/app_textstyle.dart';
 import 'package:goalnow_app/core/const/app_asset_path.dart';
 import 'package:goalnow_app/core/const/app_color.dart';
 import 'package:goalnow_app/core/enum/enum.dart';
+import 'package:goalnow_app/core/extension/context_extension.dart';
 import 'package:goalnow_app/routes/app_route.dart';
 import 'package:goalnow_app/screen/home/widget/build_news.dart';
 import 'package:goalnow_app/screen/home/widget/side_menu_content.dart';
@@ -114,7 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Align(
             alignment: isRight ? Alignment.centerRight : Alignment.centerLeft,
             child: SideMenuContent(
-              width: MediaQuery.of(context).size.width * 0.7,
+              width: context.sw * 0.7,
               side: side,
             ),
           ),

@@ -5,7 +5,7 @@ import 'package:goalnow_app/core/const/app_color.dart';
 class AppBackground extends StatelessWidget {
   final Widget child;
 
-  /// Thay ảnh theo màn
+  /// Optional background image path
   final String? imagePath;
 
   final double overlayOpacity;

@@ -39,7 +39,7 @@ class FormatHelper {
     return '$maskedLocal@$maskedDomain';
   }
 
-  // Format date api
+  /// Format date for API: YYYYMMDD
   static String apiDate(DateTime date) {
     return '${date.year}'
         '${date.month.toString().padLeft(2, '0')}'
@@ -70,9 +70,49 @@ class FormatHelper {
     return '$prefix.$last';
   }
 
+  /// Lấy màu theo đánh giá cầu thủ
+  static const double _highRatingThreshold = 7.5;
+  static const double _mediumRatingThreshold = 6.5;
+
   static Color ratingColor(double rating) {
-    if (rating >= 7.5) return const Color(0xFF2ECC71);
-    if (rating >= 6.5) return const Color(0xFFF1C40F);
+    if (rating >= _highRatingThreshold) return const Color(0xFF2ECC71);
+    if (rating >= _mediumRatingThreshold) return const Color(0xFFF1C40F);
     return Colors.white.withValues(alpha: 0.55);
+  }
+
+  /// Format market value / fee
+  /// Examples:
+  /// 2300000   -> €2.3M
+  /// 450000    -> €450K
+  /// 12000000  -> €12M
+  /// 0         -> -
+  static String formatCurrency(
+    num? value, {
+    String symbol = '€',
+    bool showZero = false,
+  }) {
+    // Null or zero value
+    if (value == null || value <= 0) {
+      return showZero ? '${symbol}0' : '-';
+    }
+    // Billion
+    if (value >= 1000000000) {
+      return '$symbol${_format(value / 1000000000)}B';
+    }
+    // Million
+    if (value >= 1000000) {
+      return '$symbol${_format(value / 1000000)}M';
+    }
+    // Thousand
+    if (value >= 1000) {
+      return '$symbol${_format(value / 1000)}K';
+    }
+    // Less than thousand
+    return '$symbol${value.toInt()}';
+  }
+
+  static String _format(num v) {
+    final s = v.toStringAsFixed(1);
+    return s.endsWith('.0') ? s.substring(0, s.length - 2) : s;
   }
 }

@@ -7,6 +7,7 @@ class MatchStatsService {
 
   MatchStatsService(this._client);
 
+  /// MATCH STATS
   Future<List<MatchStatSection>> getMatchStats(int matchId) async {
     final data = await _client.get(
       ApiEndpoint.matchStats,

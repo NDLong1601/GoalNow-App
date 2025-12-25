@@ -2,6 +2,7 @@ import 'package:goalnow_app/core/enum/enum.dart';
 import 'package:goalnow_app/core/utils/date_helper.dart';
 import 'package:goalnow_app/model/match/match.dart';
 
+/// Helper class for match grouping and filtering
 class MatchGroupHelper {
   static List<MatchModel> filterByTab(List<MatchModel> list, MatchTab tab) {
     switch (tab) {
@@ -16,6 +17,7 @@ class MatchGroupHelper {
     }
   }
 
+  /// GROUP UPCOMING MATCHES BY DATE
   static Map<String, List<MatchModel>> groupUpcomingByDate(
     List<MatchModel> matches,
   ) {
@@ -41,6 +43,7 @@ class MatchGroupHelper {
     return sortedMap;
   }
 
+  /// GROUP MATCHES BY LEAGUE WITH PRIORITY
   static Map<String, List<MatchModel>> groupByLeague({
     required List<MatchModel> matches,
     required Map<int, String> leagueNameMap,
@@ -48,10 +51,12 @@ class MatchGroupHelper {
   }) {
     final Map<int, List<MatchModel>> temp = {};
 
+    // Group matches by leagueId
     for (final match in matches) {
       temp.putIfAbsent(match.leagueId, () => []).add(match);
     }
-
+    
+    // Sort leagueIds by priority
     final sortedLeagueIds = temp.keys.toList()
       ..sort((a, b) {
         final pa = leaguePriority[a] ?? 999;
@@ -71,6 +76,7 @@ class MatchGroupHelper {
     return result;
   }
 
+  /// Lấy tiêu đề nhóm theo tab
   static String sectionTitle({required String key, required MatchTab tab}) {
     if (tab != MatchTab.upcoming) return key;
     return DateHelper.groupLabel(DateTime.parse('${key}T00:00:00'));

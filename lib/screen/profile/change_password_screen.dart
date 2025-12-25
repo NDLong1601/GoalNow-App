@@ -28,9 +28,12 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
     _newCtrl.addListener(_rebuild);
     _confirmCtrl.addListener(_rebuild);
   }
+  
+  // REBUILD
+  void _rebuild() => setState(() {});
 
-  void _rebuild() => setState(() {}); // ✅ FIX THIẾU
 
+  // DISPOSE
   @override
   void dispose() {
     _currentCtrl.dispose();
@@ -47,7 +50,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
     final current = _currentCtrl.text.trim();
     final next = _newCtrl.text.trim();
     final confirm = _confirmCtrl.text.trim();
-
     final canSave =
         !isBusy &&
         current.isNotEmpty &&

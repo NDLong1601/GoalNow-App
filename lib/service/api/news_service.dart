@@ -7,6 +7,7 @@ class NewsService {
 
   NewsService(this._client);
 
+  /// TRENDING NEWS
   Future<List<NewsModel>> getTrendingNews() async {
     final data = await _client.get(ApiEndpoint.trendingNews);
 

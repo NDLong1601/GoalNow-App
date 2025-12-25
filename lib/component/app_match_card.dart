@@ -8,7 +8,7 @@ import 'package:goalnow_app/model/match/match.dart';
 import 'package:goalnow_app/provider/match_stats_provider.dart';
 import 'package:goalnow_app/repository/match_stats_repository.dart';
 import 'package:goalnow_app/screen/match/match_detail_screen.dart';
-import 'package:goalnow_app/service/stats_service.dart';
+import 'package:goalnow_app/service/api/stats_service.dart';
 import 'package:provider/provider.dart';
 
 class AppMatchCard extends StatelessWidget {

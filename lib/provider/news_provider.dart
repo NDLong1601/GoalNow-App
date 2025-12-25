@@ -12,7 +12,7 @@ class NewsProvider extends ChangeNotifier {
   String? _error;
   List<NewsModel> _news = [];
 
-  /// Getters (để UI đọc)
+  /// Getters
   bool get loading => _loading;
   String? get error => _error;
   List<NewsModel> get news => _news;
@@ -27,13 +27,14 @@ class NewsProvider extends ChangeNotifier {
       _news = await _repository.getTrendingNews();
     } catch (e) {
       _error = e.toString();
+      debugPrint('Error fetching news: $_error');
     } finally {
       _loading = false;
       notifyListeners();
     }
   }
 
-  /// Clear data (optional)
+  /// Clear data
   void clear() {
     _news = [];
     _error = null;

@@ -48,5 +48,18 @@ class AppColor {
   /// Icons secondary / disabled
   static const Color iconSecondary = textMuted;
 
+  /// White color
   static const Color white = Colors.white;
+
+  /// Black color
+  static const Color black = Colors.black;
+
+  /// Transparent color
+  static const Color transparent = Colors.transparent;
+
+  /// Shadow color
+  static const Color shadow = Colors.black54;
+
+  /// Overlay color (e.g. modals)
+  static const Color overlay = Colors.black87;
 }

@@ -4,16 +4,15 @@ import 'api_exception.dart';
 
 class ApiClient {
   static const _baseUrl = 'https://free-api-live-football-data.p.rapidapi.com';
-
+  
+  // Common headers for API requests
   Map<String, String> apiHeader = {
     'Content-Type': 'application/json',
     'x-rapidapi-host': 'free-api-live-football-data.p.rapidapi.com',
-    'x-rapidapi-key': 'cf2adcc692msh18761dc23c1ca97p10b13djsne4a41a1e6fd7',
+    'x-rapidapi-key': '03c5ccb574mshb0fc04d4e2bf4d6p1ab077jsn7de6d9270583',
   };
 
-  String apiHost = "free-api-live-football-data.p.rapidapi.com";
-  String apiKey = "cf2adcc692msh18761dc23c1ca97p10b13djsne4a41a1e6fd7";
-
+  /// Generic GET request method
   Future<Map<String, dynamic>> get(
     String path, {
     Map<String, String>? query,
@@ -22,11 +21,11 @@ class ApiClient {
 
     try {
       final response = await http.get(uri, headers: apiHeader);
-
+      // Successful response
       if (response.statusCode == 200) {
         return json.decode(response.body) as Map<String, dynamic>;
       }
-
+      // Error response
       throw ApiException('Request failed', statusCode: response.statusCode);
     } catch (e) {
       throw ApiException(e.toString());

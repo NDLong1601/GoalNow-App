@@ -12,8 +12,10 @@ import 'package:goalnow_app/screen/profile/edit_email_screen.dart';
 import 'package:goalnow_app/screen/profile/edit_name_screen.dart';
 import 'package:goalnow_app/screen/profile/profile_screen.dart';
 import 'package:goalnow_app/screen/setting/setting_screen.dart';
+import 'package:goalnow_app/screen/transfer/transfer_screen.dart';
 
 class AppRoute {
+  // Main Screens
   static const String home = '/home';
   static const String settings = '/settings';
   static const String favorite = '/favorites';
@@ -33,6 +35,13 @@ class AppRoute {
   static const String matchs = '/matchs';
   static const String matchDetail = '/match-detail';
 
+  static const String transfers = '/transfers';
+  static const String standings = '/standings';
+  static const String player = '/player';
+  static const String leagues = '/leagues';
+  static const String friends = '/friends';
+
+  // Add more routes as needed
   Map<String, Widget Function(BuildContext)> routes = <String, WidgetBuilder>{
     AppRoute.home: (context) => const HomeScreen(),
     AppRoute.settings: (context) => const SettingScreen(),
@@ -49,7 +58,7 @@ class AppRoute {
     AppRoute.changePass: (context) => const ChangePasswordScreen(),
 
     AppRoute.matchs: (context) => const MatchsScreen(),
-    // AppRoute.matchDetail: (context) => const MatchDetailScreen(),
-    // AppRoute.changePass: (context) => const ChangePasswordScreen(),
+
+    AppRoute.transfers: (context) => const TransferScreen(),
   };
 }

@@ -3,12 +3,19 @@ import 'package:goalnow_app/component/app_text.dart';
 import 'package:goalnow_app/component/app_textstyle.dart';
 import 'package:goalnow_app/core/const/app_color.dart';
 import 'package:goalnow_app/core/enum/enum.dart';
+import 'package:goalnow_app/routes/app_route.dart';
 
 class SideMenuContent extends StatelessWidget {
   final double width;
   final PanelSide side;
 
   const SideMenuContent({super.key, required this.width, required this.side});
+
+  void _goTo(BuildContext context, String routeName) {
+    // Close the side panel before navigating
+    Navigator.pop(context);
+    Navigator.pushNamed(context, routeName);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,11 +40,26 @@ class SideMenuContent extends StatelessWidget {
             ),
             const SizedBox(height: 24),
 
-            MenuItem(title: 'Tranfers'),
-            MenuItem(title: 'Standings'),
-            MenuItem(title: 'Player'),
-            MenuItem(title: 'Leagues'),
-            MenuItem(title: 'Friends'),
+            MenuItem(
+              title: 'Transfers',
+              onTap: () => _goTo(context, AppRoute.transfers),
+            ),
+            MenuItem(
+              title: 'Standings',
+              // onTap: () => _goTo(context, AppRoute.standings),
+            ),
+            MenuItem(
+              title: 'Player',
+              // onTap: () => _goTo(context, AppRoute.player),
+            ),
+            MenuItem(
+              title: 'Leagues',
+              // onTap: () => _goTo(context, AppRoute.leagues),
+            ),
+            MenuItem(
+              title: 'Friends',
+              // onTap: () => _goTo(context, AppRoute.friends),
+            ),
           ],
         ),
       ),
@@ -48,16 +70,21 @@ class SideMenuContent extends StatelessWidget {
 
 class MenuItem extends StatelessWidget {
   final String title;
+  final VoidCallback? onTap;
 
-  const MenuItem({super.key, required this.title});
+  const MenuItem({super.key, required this.title, this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 14),
-      child: AppText(
-        text: title.toUpperCase(),
-        style: AppTextStyle.inputLabel.copyWith(letterSpacing: 0.5),
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(8),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 14),
+        child: AppText(
+          text: title.toUpperCase(),
+          style: AppTextStyle.inputLabel.copyWith(letterSpacing: 0.5),
+        ),
       ),
     );
   }

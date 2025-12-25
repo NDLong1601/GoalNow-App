@@ -14,7 +14,7 @@ class LineupPitch extends StatelessWidget {
   static const double _nameWidth = 64;
   static const double _gap = 4;
 
-  /// Text 1 dòng + avatar
+  /// NODE HEIGHT
   static const double _nodeHeight = (_avatarRadius * 2) + _gap + 16;
 
   static const double _nodeWidth = _nameWidth;

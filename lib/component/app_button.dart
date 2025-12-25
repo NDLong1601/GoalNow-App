@@ -92,8 +92,8 @@ class AppButton extends StatelessWidget {
         : RoundedRectangleBorder(borderRadius: BorderRadius.circular(radius));
 
     return SizedBox(
-      height: height ?? 52 / 812 * context.sh,
-      width: width ?? 343 / 375 * context.sw,
+      height: height ?? (52 / 812 * context.sh),
+      width: width ?? (343 / 375 * context.sw),
       child: OutlinedButton(
         onPressed: isDisabled ? null : onPressed,
         style: OutlinedButton.styleFrom(
@@ -139,9 +139,7 @@ class AppButton extends StatelessWidget {
 
         Text(
           text ?? '',
-          style: AppTextStyle.buttonPrimary.copyWith(
-            color: textColor,
-          ),
+          style: AppTextStyle.buttonPrimary.copyWith(color: textColor),
         ),
 
         if (suffixIconPath != null) ...[

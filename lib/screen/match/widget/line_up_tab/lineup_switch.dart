@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:goalnow_app/provider/lineup_provider.dart';
 import 'package:goalnow_app/core/const/app_color.dart';
 
+/// LINEUP SWITCH BUTTON
 class LineupSwitch extends StatelessWidget {
   const LineupSwitch({super.key});
 

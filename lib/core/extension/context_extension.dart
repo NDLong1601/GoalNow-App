@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 extension ContextExtension on BuildContext {
+  // Access to ThemeData
   ThemeData get theme => Theme.of(this);
 
   // Screen height

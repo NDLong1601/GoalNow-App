@@ -33,6 +33,7 @@ dependencies:
 
   # Local storage
   hive: ^2.2.3
+  hive_flutter: ^1.1.0
 
   # WebSocket
   web_socket_channel: ^3.0.3
@@ -59,6 +60,8 @@ dependencies:
   cupertino_icons: ^1.0.8
   add_2_calendar: ^3.0.1
 
+  intl: ^0.19.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -68,8 +71,7 @@ dev_dependencies:
   # Code generation
   build_runner: ^2.4.7
   json_serializable: ^6.7.1
-
-
+  hive_generator: ^2.0.1
 
 flutter_launcher_icons:
   android: true

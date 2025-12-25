@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// PITCH PAINTER
 class PitchPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {

@@ -1,26 +1,28 @@
+import 'package:flutter/material.dart';
 import 'package:goalnow_app/core/const/app_asset_path.dart';
 
 class LogoIconMapper {
+
   static final Map<String, String> _logoIconMap = {
     // Premier League
-    'man united': AppAssetsPath.manUtd,
-    'man city': AppAssetsPath.mci,
-    'arsenal': AppAssetsPath.asrenal,
+    'man united': AppAssetsPath.manchesterUnited,
+    'man city': AppAssetsPath.manchesterCity,
+    'arsenal': AppAssetsPath.arsenal,
     'chelsea': AppAssetsPath.chelsea,
     'liverpool': AppAssetsPath.liverpool,
     'tottenham': AppAssetsPath.tottenham,
     'newcastle': AppAssetsPath.newcastle,
-    'wolves': AppAssetsPath.wolverhamton,
+    'wolves': AppAssetsPath.wolverhampton,
     'brentford': AppAssetsPath.brentford,
-    'Bournemouth': AppAssetsPath.bour,
+    'bournemouth': AppAssetsPath.bournemouth,
     'burnley': AppAssetsPath.burnley,
     'brighton': AppAssetsPath.brighton,
     'sunderland': AppAssetsPath.sunderland,
-    'west ham': AppAssetsPath.westham,
-    'leeds': AppAssetsPath.leeds,
-    'crystal palace': AppAssetsPath.cry,
-    'Everton': AppAssetsPath.everton,
-    'Aston Villa': AppAssetsPath.aston,
+    'west ham': AppAssetsPath.westHam,
+    'leeds': AppAssetsPath.leedsUnited,
+    'crystal palace': AppAssetsPath.crystalPalace,
+    'everton': AppAssetsPath.everton,
+    'aston villa': AppAssetsPath.astonVilla,
 
     // // La Liga
     // 'real madrid': 'assets/teams/real_madrid.png',
@@ -31,8 +33,8 @@ class LogoIconMapper {
     // 'bayern munich': 'assets/teams/bayern.png',
     // 'psg': 'assets/teams/psg.png',
   };
-
-  /// Chuẩn hoá tên đội để map ổn định
+  
+  /// Normalize team name to key
   static String _normalize(String name) {
     return name
         .toLowerCase()
@@ -47,3 +49,19 @@ class LogoIconMapper {
     return _logoIconMap[key];
   }
 }
+
+/// Helper class for club logos
+class LogoHelper {
+  static Widget clubLogo(String clubName, {double size = 24}) {
+    final assetPath = LogoIconMapper.getLogo(clubName);
+
+    return Image.asset(
+      assetPath ?? AppAssetsPath.logoDefault,
+      width: size,
+      height: size,
+      fit: BoxFit.contain,
+    );
+  }
+}
+
+

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:goalnow_app/core/network/api_client.dart';
 import 'package:goalnow_app/core/network/api_endpoint.dart';
 
@@ -12,7 +13,7 @@ class LineupService {
       ApiEndpoint.homeTeamLineup,
       query: {'eventid': eventId.toString()},
     );
-
+    debugPrint('Home Lineup Response: $respone');
     return respone['response']?['lineup'];
   }
 
@@ -22,7 +23,7 @@ class LineupService {
       ApiEndpoint.awayTeamLineup,
       query: {'eventid': eventId.toString()},
     );
-
+    debugPrint('Away Lineup Response: $respone');
     return respone['response']?['lineup'];
   }
 }

@@ -7,19 +7,24 @@ class MatchProvider extends ChangeNotifier {
 
   MatchProvider(this._repository);
 
+  /// State
   bool loading = false;
   String? error;
   List<MatchModel> matches = [];
 
+  /// Fetch matches by date
   Future<void> fetchMatches(String date) async {
     loading = true;
     error = null;
     notifyListeners();
 
     try {
+      // Fetch matches by date
       matches = await _repository.getMatchesByDate(date);
+      debugPrint('Fetched ${matches.length} matches for date $date');
     } catch (e) {
       error = e.toString();
+      debugPrint('Error fetching matches: $error');
     } finally {
       loading = false;
       notifyListeners();

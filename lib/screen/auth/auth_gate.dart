@@ -18,9 +18,9 @@ class AuthGate extends StatelessWidget {
     }
 
     if (auth.isSignedIn) {
-      return const BottomTab(); // AppRoute.bottomTab
+      return const BottomTab();
     }
 
-    return const SignInScreen(); // AppRoute.signIn
+    return const SignInScreen();
   }
 }
