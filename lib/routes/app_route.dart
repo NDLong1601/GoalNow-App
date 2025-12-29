@@ -3,7 +3,7 @@ import 'package:goalnow_app/screen/auth/sign_in_form.dart';
 import 'package:goalnow_app/screen/auth/sign_up_form.dart';
 import 'package:goalnow_app/screen/bottom_tab/bottom_tab.dart';
 import 'package:goalnow_app/screen/favourites/favourites_screen.dart';
-import 'package:goalnow_app/screen/highlight/hightlight_screen.dart';
+import 'package:goalnow_app/screen/highlight/highlight_screen.dart';
 import 'package:goalnow_app/screen/home/home_screen.dart';
 import 'package:goalnow_app/screen/match/matchs_screen.dart';
 import 'package:goalnow_app/screen/news/news_screen.dart';

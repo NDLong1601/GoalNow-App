@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goalnow_app/core/network/api_client.dart';
+import 'package:goalnow_app/provider/highlight_provider.dart';
 import 'package:goalnow_app/provider/match_provider.dart';
 import 'package:goalnow_app/provider/news_provider.dart';
 import 'package:goalnow_app/provider/transfer_provider.dart';
@@ -7,10 +8,12 @@ import 'package:goalnow_app/provider/user_provider.dart';
 import 'package:goalnow_app/repository/math_repository.dart';
 import 'package:goalnow_app/repository/news_repository.dart';
 import 'package:goalnow_app/repository/transfer_repository.dart';
+import 'package:goalnow_app/repository/youtube_repository.dart';
 import 'package:goalnow_app/routes/app_route.dart';
 import 'package:goalnow_app/service/api/match_service.dart';
 import 'package:goalnow_app/service/api/news_service.dart';
 import 'package:goalnow_app/service/api/transfer_service.dart';
+import 'package:goalnow_app/service/api/youtube_service.dart';
 import 'package:goalnow_app/service/local/local_service.dart';
 import 'package:goalnow_app/model/transfer/transfer_local_model.dart';
 import 'package:provider/provider.dart';
@@ -40,6 +43,7 @@ Future<void> main() async {
         Provider(create: (c) => NewsService(c.read<ApiClient>())),
         Provider(create: (c) => MatchService(c.read<ApiClient>())),
         Provider(create: (c) => TransferService(c.read<ApiClient>())),
+        Provider(create: (c) => YouTubeService()),
 
         /// Repositories
         Provider(create: (c) => NewsRepository(c.read<NewsService>())),
@@ -49,6 +53,9 @@ Future<void> main() async {
             c.read<TransferService>(),
             c.read<LocalService>(),
           ),
+        ),
+        Provider(
+          create: (c) => YouTubeRepository(service: c.read<YouTubeService>()),
         ),
 
         /// Providers
@@ -60,6 +67,10 @@ Future<void> main() async {
         ),
         ChangeNotifierProvider(
           create: (c) => TransferProvider(c.read<TransferRepository>()),
+        ),
+        ChangeNotifierProvider(
+          create: (c) =>
+              HighlightProvider(repository: c.read<YouTubeRepository>()),
         ),
         ChangeNotifierProvider(create: (_) => UserProvider()),
       ],

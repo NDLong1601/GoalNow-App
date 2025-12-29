@@ -10,4 +10,6 @@ class ApiEndpoint {
   static const allTransfers = '/football-get-all-transfers';
   static const topGoals = '/football-get-top-players-by-goals';
   static const topAssists = '/football-get-top-players-by-assists';
+  static const leagues = '/football-get-leagues';
+  static const standings = '/football-get-standing-all';
 }

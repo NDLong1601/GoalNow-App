@@ -14,7 +14,7 @@ class NewsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppScaffold(
-      overlayOpacity: 0.9,
+      overlayOpacity: 0.5,
       appBar: AppBar(
         title: AppText(text: 'Hot News', style: AppTextStyle.h2),
         backgroundColor: AppColor.background,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:goalnow_app/core/const/app_asset_path.dart';
 import 'package:goalnow_app/core/const/app_color.dart';
 import 'package:goalnow_app/screen/favourites/favourites_screen.dart';
-import 'package:goalnow_app/screen/highlight/hightlight_screen.dart';
+import 'package:goalnow_app/screen/highlight/highlight_screen.dart';
 import 'package:goalnow_app/screen/home/home_screen.dart';
 import 'package:goalnow_app/screen/match/matchs_screen.dart';
 import 'package:goalnow_app/screen/news/news_screen.dart';

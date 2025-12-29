@@ -4,12 +4,13 @@ import 'api_exception.dart';
 
 class ApiClient {
   static const _baseUrl = 'https://free-api-live-football-data.p.rapidapi.com';
-  
+
   // Common headers for API requests
   Map<String, String> apiHeader = {
     'Content-Type': 'application/json',
     'x-rapidapi-host': 'free-api-live-football-data.p.rapidapi.com',
     'x-rapidapi-key': '03c5ccb574mshb0fc04d4e2bf4d6p1ab077jsn7de6d9270583',
+    // 'x-rapidapi-key': '804d887140msh20ac4c21ae4aaecp1ae95ajsnb755024d5d51',
   };
 
   /// Generic GET request method

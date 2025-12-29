@@ -1,0 +1,29 @@
+class VideoModel {
+  final String videoId;
+  final String title;
+  final String thumbnailUrl;
+
+  VideoModel({
+    required this.videoId,
+    required this.title,
+    required this.thumbnailUrl,
+  });
+
+  factory VideoModel.fromJson(Map<String, dynamic> json) {
+    final snippet = json['snippet'];
+    final resourceId = snippet?['resourceId'];
+
+    if (snippet == null || resourceId == null) {
+      throw Exception('Invalid video json structure');
+    }
+
+    return VideoModel(
+      videoId: resourceId['videoId'] ?? '',
+      title: snippet['title'] ?? '',
+      thumbnailUrl:
+          snippet['thumbnails']?['high']?['url'] ??
+          snippet['thumbnails']?['default']?['url'] ??
+          '',
+    );
+  }
+}
