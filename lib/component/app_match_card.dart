@@ -74,7 +74,7 @@ class AppMatchCard extends StatelessWidget {
           decoration: BoxDecoration(
             color: AppColor.surface,
             borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: AppColor.primary.withValues(alpha: 0.6)),
+            border: Border.all(color: AppColor.white.withValues(alpha: 0.3)),
           ),
           child: Column(
             children: [
@@ -107,8 +107,12 @@ class AppMatchCard extends StatelessWidget {
                       ),
                       const SizedBox(height: 6),
 
-                      /// Finished / Live → status badge
-                      if (showScore) _statusBadge(),
+                      SizedBox(
+                        height: 22,
+                        child: showScore
+                            ? _statusBadge()
+                            : const SizedBox.shrink(),
+                      ),
                     ],
                   ),
 
@@ -158,9 +162,9 @@ class AppMatchCard extends StatelessWidget {
   }
 
   // STATUS BADGE (LIVE / FT)
-   Widget _statusBadge() {  
-    final Color color = isLive ? Colors.red : Colors.white54;  
+  Widget _statusBadge() {
+    final Color color = isLive ? Colors.red : Colors.white54;
 
-    return AppMatchBadge(text: statusText, color: color);  
+    return AppMatchBadge(text: statusText, color: color);
   }
 }

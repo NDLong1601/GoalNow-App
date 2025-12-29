@@ -35,6 +35,8 @@ class _BuildNewsState extends State<BuildNews> {
         }
 
         return ListView.separated(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
           itemCount: provider.news.length,
           itemBuilder: (context, index) {
             final news = provider.news[index];

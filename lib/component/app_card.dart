@@ -28,7 +28,7 @@ class AppNewsCard extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColor.surface,
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: AppColor.primary.withValues(alpha: 0.8)),
+          border: Border.all(color: AppColor.white.withValues(alpha: 0.3)),
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -140,7 +140,6 @@ class AppNewsVerticalCard extends StatelessWidget {
                       child: const Icon(Icons.image_not_supported),
                     ),
                   ),
-
 
                   /// Gradient overlay
                   Positioned.fill(

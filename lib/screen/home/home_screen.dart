@@ -8,6 +8,8 @@ import 'package:goalnow_app/core/const/app_color.dart';
 import 'package:goalnow_app/core/enum/enum.dart';
 import 'package:goalnow_app/core/extension/context_extension.dart';
 import 'package:goalnow_app/routes/app_route.dart';
+import 'package:goalnow_app/screen/home/widget/build_featured_match.dart';
+import 'package:goalnow_app/screen/home/widget/build_highlight.dart';
 import 'package:goalnow_app/screen/home/widget/build_news.dart';
 import 'package:goalnow_app/screen/home/widget/side_menu_content.dart';
 
@@ -37,7 +39,6 @@ class _HomeScreenState extends State<HomeScreen> {
               size: 24,
             ),
           ),
-
           title: AppText(text: "GOAL NOW", style: AppTextStyle.h1),
           actions: [
             IconButton(
@@ -50,41 +51,54 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ],
         ),
-
         body: Column(
           mainAxisAlignment: .start,
           crossAxisAlignment: .center,
           children: [
-            AppSectionHeader(
-              title: 'Featured Matches',
-              showAction: true,
-              actionText: 'See More',
-              onTap: () => {
-                // Navigator.pushReplacementNamed(context, AppRoute.matchs),
-              },
-            ),
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.only(bottom: 12),
+                child: Column(
+                  children: [
+                    /// Featured Matches
+                     const SizedBox(height: 6),
+                    AppSectionHeader(
+                      title: 'Featured Matches',
+                      showAction: true,
+                      actionText: 'See more',
+                      onTap: () {
+                        Navigator.pushNamed(context, AppRoute.matchs);
+                      },
+                    ),
+                    const BuildFeaturedMatch(maxItems: 4),
 
-            // News
-            AppSectionHeader(
-              title: 'Hot news',
-              showAction: true,
-              actionText: 'See More',
-              onTap: () => {Navigator.pushNamed(context, AppRoute.news)},
-            ),
-            Expanded(child: BuildNews()),
+                    const SizedBox(height: 6),
+                    /// News
+                    AppSectionHeader(
+                      title: 'Hot News',
+                      showAction: true,
+                      actionText: 'See more',
+                      onTap: () => Navigator.pushNamed(context, AppRoute.news),
+                    ),
+                    const BuildNews(),
 
-            // HightLights
-            AppSectionHeader(
-              title: 'Popular Highlights',
-              showAction: true,
-              actionText: 'See More',
-              onTap: () => {
-                Navigator.pushReplacementNamed(context, AppRoute.highlight),
-              },
-            ),
+                    const SizedBox(height: 12),
+                    /// Highlights
+                    AppSectionHeader(
+                      title: 'Latest Highlights',
+                      showAction: true,
+                      actionText: 'See more',
+                      onTap: () =>
+                          Navigator.pushNamed(context, AppRoute.highlight),
+                    ),
 
-            // Favourites Club
-            AppSectionHeader(title: 'Favourite Clubs', showAction: false),
+                    const BuildLatestHighlights(),
+
+                    const SizedBox(height: 12),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
@@ -114,10 +128,7 @@ class _HomeScreenState extends State<HomeScreen> {
           position: slideAnimation,
           child: Align(
             alignment: isRight ? Alignment.centerRight : Alignment.centerLeft,
-            child: SideMenuContent(
-              width: context.sw * 0.7,
-              side: side,
-            ),
+            child: SideMenuContent(width: context.sw * 0.7, side: side),
           ),
         );
       },
