@@ -1,70 +1,72 @@
 import 'package:flutter/material.dart';
-import 'package:goalnow_app/component/app_text.dart';
 import 'package:goalnow_app/component/app_textstyle.dart';
+import 'package:goalnow_app/core/const/app_color.dart';
 
-class AppSectionTitle extends StatelessWidget {
+class AppSectionHeader extends StatelessWidget {
   final String title;
 
-  final EdgeInsetsGeometry? padding;
-  final EdgeInsetsGeometry? margin;
-
-  /// Right side
+  /// Action
   final bool showAction;
-  final String actionText;
-  final Widget? actionIcon;
-  final VoidCallback? onAction;
-  final String? routeName;
+  final String actionText; // "See more" / "Xem thêm"
+  final bool enabled;
+  final VoidCallback? onTap;
 
-  final Widget? trailing;
+  final bool showChevron;
 
-  const AppSectionTitle({
+  final EdgeInsetsGeometry padding;
+
+  const AppSectionHeader({
     super.key,
     required this.title,
-    this.padding,
-    this.margin,
-    this.showAction = false,
-    this.actionText = 'More',
-    this.actionIcon,
-    this.onAction,
-    this.routeName,
-    this.trailing,
+    this.showAction = true,
+    this.actionText = 'See more',
+    this.enabled = true,
+    this.onTap,
+    this.showChevron = true,
+    this.padding = const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
   });
 
   @override
   Widget build(BuildContext context) {
-    void handleTap() {
-      if (routeName != null) {
-        Navigator.pushNamed(context, routeName!);
-        return;
-      }
-      onAction?.call();
-    }
+    final Color actionColor = enabled ? AppColor.primary : AppColor.textMuted;
 
-    return Container(
-      margin: margin,
-      padding: EdgeInsets.symmetric(vertical: 8, horizontal: 24),
+    return Padding(
+      padding: padding,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          AppText(
-            text: title,
-            style: AppTextstyle.semiboldTs16Black,
-            textAlign: TextAlign.start,
+          Text(
+            title,
+            style: AppTextStyle.h2,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
           ),
 
-          if (trailing != null)
-            trailing!
-          else if (showAction)
-            GestureDetector(
-              onTap: (routeName != null || onAction != null) ? handleTap : null,
-              child: Row(
-                children: [
-                  if (actionIcon != null) ...[actionIcon!, SizedBox(width: 6)],
-                  AppText(
-                    text: actionText,
-                    style: AppTextstyle.boldTs16Primary,
-                  ),
-                ],
+          if (showAction)
+            InkWell(
+              borderRadius: BorderRadius.circular(8),
+              onTap: enabled ? onTap : null,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      actionText,
+                      style: AppTextStyle.buttonSecondary.copyWith(
+                        color: actionColor,
+                      ),
+                    ),
+                    if (showChevron) ...[
+                      const SizedBox(width: 4),
+                      Icon(
+                        Icons.chevron_right,
+                        size: 16,
+                        color: actionColor,
+                      ),
+                    ],
+                  ],
+                ),
               ),
             ),
         ],

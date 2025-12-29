@@ -5,6 +5,7 @@ class AppText extends StatelessWidget {
   final TextStyle? style;
   final TextAlign? textAlign;
   final int maxLines;
+  final TextOverflow? textOverflow;
 
   const AppText({
     super.key,
@@ -12,6 +13,7 @@ class AppText extends StatelessWidget {
     this.style,
     this.textAlign,
     this.maxLines = 1,
+    this.textOverflow,
   });
 
   @override
