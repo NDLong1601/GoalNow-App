@@ -161,24 +161,6 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                   ],
                 ),
               ),
-              Container(
-                padding: EdgeInsets.all(12),
-                margin: EdgeInsets.only(top: 20, bottom: 30),
-                decoration: BoxDecoration(
-                  color: AppColor.surface.withValues(alpha: 0.9),
-                  borderRadius: BorderRadius.circular(14),
-                  border: Border.all(
-                    color: AppColor.primaryDark.withValues(alpha: 0.6),
-                    width: 1,
-                  ),
-                ),
-                height: 140,
-                child: Row(
-                  children: [
-                    
-                  ],
-                ),
-              ),
             ],
           ),
         ),

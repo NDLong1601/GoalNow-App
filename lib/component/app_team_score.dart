@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../component/app_text.dart';
-import '../component/app_textstyle.dart';
-import '../core/const/app_color.dart';
+import 'package:goalnow_app/component/app_text.dart';
+import 'package:goalnow_app/component/app_textstyle.dart';
+import 'package:goalnow_app/core/const/app_color.dart';
 
 class AppTeamScore extends StatelessWidget {
   final String name;

@@ -5,7 +5,7 @@ import 'package:goalnow_app/provider/match_provider.dart';
 import 'package:goalnow_app/provider/news_provider.dart';
 import 'package:goalnow_app/provider/transfer_provider.dart';
 import 'package:goalnow_app/provider/user_provider.dart';
-import 'package:goalnow_app/repository/math_repository.dart';
+import 'package:goalnow_app/repository/match_repository.dart';
 import 'package:goalnow_app/repository/news_repository.dart';
 import 'package:goalnow_app/repository/transfer_repository.dart';
 import 'package:goalnow_app/repository/youtube_repository.dart';

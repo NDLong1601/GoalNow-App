@@ -39,7 +39,7 @@ class AppTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final borderColor = Colors.grey;
+final borderColor = AppColor.divider;
     final fillColor = AppColor.surfaceElevated;
     final focusColor = AppColor.primary;
 

@@ -4,13 +4,8 @@ import 'package:goalnow_app/component/app_team_logo.dart';
 import 'package:goalnow_app/component/app_text.dart';
 import 'package:goalnow_app/component/app_textstyle.dart';
 import 'package:goalnow_app/core/const/app_color.dart';
-import 'package:goalnow_app/core/network/api_client.dart';
 import 'package:goalnow_app/model/match/match.dart';
-import 'package:goalnow_app/provider/match_stats_provider.dart';
-import 'package:goalnow_app/repository/match_stats_repository.dart';
 import 'package:goalnow_app/screen/match/match_detail_screen.dart';
-import 'package:goalnow_app/service/api/stats_service.dart';
-import 'package:provider/provider.dart';
 
 class AppMatchCard extends StatelessWidget {
   final MatchModel match;
@@ -56,12 +51,7 @@ class AppMatchCard extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (_) => ChangeNotifierProvider(
-                    create: (_) => MatchStatsProvider(
-                      MatchStatsRepository(MatchStatsService(ApiClient())),
-                    )..fetchStats(match.id),
-                    child: MatchDetailScreen(match: match),
-                  ),
+                  builder: (_) => MatchDetailScreen(match: match),
                 ),
               );
             }

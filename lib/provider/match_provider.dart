@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goalnow_app/model/match/match.dart';
-import 'package:goalnow_app/repository/math_repository.dart';
+import 'package:goalnow_app/repository/match_repository.dart';
 
 class MatchProvider extends ChangeNotifier {
   final MatchRepository _repository;

@@ -5,7 +5,7 @@ import 'package:goalnow_app/screen/bottom_tab/bottom_tab.dart';
 import 'package:goalnow_app/screen/favourites/favourites_screen.dart';
 import 'package:goalnow_app/screen/highlight/highlight_screen.dart';
 import 'package:goalnow_app/screen/home/home_screen.dart';
-import 'package:goalnow_app/screen/match/matchs_screen.dart';
+import 'package:goalnow_app/screen/match/match_screen.dart';
 import 'package:goalnow_app/screen/news/news_screen.dart';
 import 'package:goalnow_app/screen/profile/change_password_screen.dart';
 import 'package:goalnow_app/screen/profile/edit_email_screen.dart';
