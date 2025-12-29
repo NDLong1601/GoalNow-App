@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goalnow_app/component/app_match_badge.dart';
 import 'package:goalnow_app/component/app_team_logo.dart';
 import 'package:goalnow_app/component/app_text.dart';
 import 'package:goalnow_app/component/app_textstyle.dart';
@@ -157,22 +158,9 @@ class AppMatchCard extends StatelessWidget {
   }
 
   // STATUS BADGE (LIVE / FT)
-  Widget _statusBadge() {
-    final Color color = isLive ? Colors.red : Colors.white54;
+   Widget _statusBadge() {  
+    final Color color = isLive ? Colors.red : Colors.white54;  
 
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-      decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.15),
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: AppText(
-        text: statusText,
-        style: AppTextStyle.bodySmall.copyWith(
-          color: color,
-          fontWeight: FontWeight.w600,
-        ),
-      ),
-    );
+    return AppMatchBadge(text: statusText, color: color);  
   }
 }

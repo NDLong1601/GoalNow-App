@@ -132,7 +132,15 @@ class AppNewsVerticalCard extends StatelessWidget {
                     height: 200,
                     width: double.infinity,
                     fit: BoxFit.cover,
+                    errorBuilder: (_, _, _) => Container(
+                      height: 200,
+                      width: double.infinity,
+                      color: AppColor.background,
+                      alignment: Alignment.center,
+                      child: const Icon(Icons.image_not_supported),
+                    ),
                   ),
+
 
                   /// Gradient overlay
                   Positioned.fill(

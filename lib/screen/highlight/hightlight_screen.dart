@@ -61,7 +61,7 @@ class _HighlightScreenState extends State<HighlightScreen> {
                             ),
                           ),
                           // Position
-                          Positioned(child: AppText(text: 'CB'))
+                          Positioned(child: AppText(text: 'CB')),
                         ],
                       ),
                       AppText(

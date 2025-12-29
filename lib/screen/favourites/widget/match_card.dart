@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:goalnow_app/component/app_text.dart';
 import 'package:goalnow_app/component/app_textstyle.dart';
 import 'package:goalnow_app/core/const/app_color.dart';
-import 'package:goalnow_app/screen/favourites/favourites_screen.dart';
 import 'package:goalnow_app/screen/favourites/widget/status_pill.dart';
+import 'package:goalnow_app/screen/favourites/widget/team_row.dart';
 
 class MatchCard extends StatelessWidget {
   final MatchCardData data;
@@ -71,4 +71,26 @@ class MatchCard extends StatelessWidget {
       ),
     );
   }
+}
+
+class MatchCardData {
+  final bool isLive;
+  final String statusRightText;
+  final String league;
+
+  final String homeTeam;
+  final String awayTeam;
+
+  final int? homeScore;
+  final int? awayScore;
+
+  const MatchCardData({
+    required this.isLive,
+    required this.statusRightText,
+    required this.league,
+    required this.homeTeam,
+    required this.awayTeam,
+    required this.homeScore,
+    required this.awayScore,
+  });
 }

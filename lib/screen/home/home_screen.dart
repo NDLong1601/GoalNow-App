@@ -66,7 +66,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
             // News
             AppSectionHeader(
-              title: 'Not news',
+              title: 'Hot news',
               showAction: true,
               actionText: 'See More',
               onTap: () => {Navigator.pushNamed(context, AppRoute.news)},

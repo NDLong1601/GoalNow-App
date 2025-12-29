@@ -54,7 +54,9 @@ class AppTeamScore extends StatelessWidget {
     return CircleAvatar(
       radius: 14,
       backgroundColor: AppColor.background,
-      backgroundImage: NetworkImage(logoUrl),
+      backgroundImage: NetworkImage(logoUrl),  
+      onBackgroundImageError: (_, _) {},  
+      child: const Icon(Icons.shield, color: Colors.white, size: 14),  
     );
   }
 }
