@@ -7,7 +7,9 @@ import 'package:goalnow_app/core/enum/enum.dart';
 import 'package:goalnow_app/core/network/api_client.dart';
 import 'package:goalnow_app/model/match/match.dart';
 import 'package:goalnow_app/provider/lineup_provider.dart';
+import 'package:goalnow_app/provider/match_stats_provider.dart';
 import 'package:goalnow_app/repository/lineup_repository.dart';
+import 'package:goalnow_app/repository/match_stats_repository.dart';
 import 'package:goalnow_app/screen/match/widget/match_detail/match_detail_header.dart';
 import 'package:goalnow_app/screen/match/widget/line_up_tab/match_lineups.dart';
 import 'package:goalnow_app/screen/match/widget/match_detail/match_status.dart';
@@ -58,9 +60,14 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
               index: _tab.index,
               children: [
                 // Statistics
-                ListView(
-                  padding: const EdgeInsets.fromLTRB(16, 4, 16, 16),
-                  children: const [MatchStatistic()],
+                ChangeNotifierProvider(
+                  create: (context) =>
+                      MatchStatsProvider(context.read<MatchStatsRepository>())
+                        ..fetchStats(match.id),
+                  child: ListView(
+                    padding: const EdgeInsets.fromLTRB(16, 4, 16, 16),
+                    children: const [MatchStatistic()],
+                  ),
                 ),
 
                 // Lineups
