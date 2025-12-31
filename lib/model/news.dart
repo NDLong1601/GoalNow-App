@@ -1,19 +1,12 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-@HiveType(typeId: 0)
 @JsonSerializable()
 class NewsModel {
   final String id;
-
   final String title;
-
   final String imageUrl;
-
   final DateTime time;
-
   final String source;
-
   final String detailPath;
 
   NewsModel({

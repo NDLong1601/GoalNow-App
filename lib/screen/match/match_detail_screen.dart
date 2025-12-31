@@ -7,10 +7,12 @@ import 'package:goalnow_app/core/enum/enum.dart';
 import 'package:goalnow_app/core/network/api_client.dart';
 import 'package:goalnow_app/model/match/match.dart';
 import 'package:goalnow_app/provider/lineup_provider.dart';
+import 'package:goalnow_app/provider/match_stats_provider.dart';
 import 'package:goalnow_app/repository/lineup_repository.dart';
 import 'package:goalnow_app/screen/match/widget/match_detail/match_detail_header.dart';
 import 'package:goalnow_app/screen/match/widget/line_up_tab/match_lineups.dart';
 import 'package:goalnow_app/screen/match/widget/match_detail/match_status.dart';
+import 'package:goalnow_app/screen/match/widget/rating_tab/match_rating.dart';
 import 'package:goalnow_app/screen/match/widget/statistics_tab/match_statistic.dart';
 import 'package:goalnow_app/screen/match/widget/match_detail/match_detail_tabbar.dart';
 import 'package:goalnow_app/service/api/lineup_service.dart';
@@ -26,6 +28,19 @@ class MatchDetailScreen extends StatefulWidget {
 
 class _MatchDetailScreenState extends State<MatchDetailScreen> {
   MatchDetailTab _tab = MatchDetailTab.statistics;
+  bool _statsLoaded = false;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (_statsLoaded) return;
+    _statsLoaded = true;
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<MatchStatsProvider>().fetchStats(widget.match.id);
+      context.read<LineupProvider>().load(widget.match.id);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,35 +66,25 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
             current: _tab,
             onChanged: (tab) => setState(() => _tab = tab),
           ),
-
-          // Content
           Expanded(
-            child: IndexedStack(
-              index: _tab.index,
-              children: [
-                // Statistics
-                ListView(
-                  padding: const EdgeInsets.fromLTRB(16, 4, 16, 16),
-                  children: const [MatchStatistic()],
-                ),
-
-                // Lineups
-                ChangeNotifierProvider(
-                  create: (_) => LineupProvider(
-                    LineupRepository(LineupService(ApiClient())),
+            child: ChangeNotifierProvider(
+              create: (_) =>
+                  LineupProvider(LineupRepository(LineupService(ApiClient()))),
+              child: IndexedStack(
+                index: _tab.index,
+                children: [
+                  // Statistic
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(16, 4, 16, 16),
+                    child: MatchStatistic(),
                   ),
-                  child: MatchLineups(eventId: match.id),
-                ),
+                  // Line up
+                  MatchLineups(eventId: match.id),
 
-                // Ratings
-                ListView(
-                  padding: const EdgeInsets.fromLTRB(16, 4, 16, 16),
-                  children: const [
-                    SizedBox(height: 12),
-                    Center(child: Text('Ratings (coming soon)')),
-                  ],
-                ),
-              ],
+                  // Ratings
+                  const MatchRatings(),
+                ],
+              ),
             ),
           ),
         ],

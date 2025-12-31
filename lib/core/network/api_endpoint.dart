@@ -8,8 +8,10 @@ class ApiEndpoint {
   static const homeTeamLineup = '/football-get-hometeam-lineup';
   static const awayTeamLineup = '/football-get-awayteam-lineup';
   static const allTransfers = '/football-get-all-transfers';
-  static const topGoals = '/football-get-top-players-by-goals';
-  static const topAssists = '/football-get-top-players-by-assists';
+  static const topGoal = '/football-get-top-players-by-goals';
+  static const topAssist = '/football-get-top-players-by-assists';
+  static const teamSquad = '/football-get-list-player';
+
   static const leagues = '/football-get-leagues';
   static const standings = '/football-get-standing-all';
 }

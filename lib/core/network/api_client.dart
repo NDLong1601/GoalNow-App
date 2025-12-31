@@ -9,8 +9,8 @@ class ApiClient {
   Map<String, String> apiHeader = {
     'Content-Type': 'application/json',
     'x-rapidapi-host': 'free-api-live-football-data.p.rapidapi.com',
-    'x-rapidapi-key': '03c5ccb574mshb0fc04d4e2bf4d6p1ab077jsn7de6d9270583',
-    // 'x-rapidapi-key': '804d887140msh20ac4c21ae4aaecp1ae95ajsnb755024d5d51',
+    // 'x-rapidapi-key': '8e02dba53emshc856639873d7006p18d686jsnacb5646ba0a3',
+    'x-rapidapi-key': 'a952bc6e0fmsha73499a40ca7fd0p1f48f5jsned5d61b57a3f',
   };
 
   /// Generic GET request method

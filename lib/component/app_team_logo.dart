@@ -11,7 +11,7 @@ class TeamLogo extends StatelessWidget {
   const TeamLogo({
     super.key,
     required this.assetPath,
-    this.size = 24,
+    this.size = 26,
     this.borderWidth = 1,
     this.borderColor = Colors.white,
     this.backgroundColor = Colors.white,
@@ -23,15 +23,15 @@ class TeamLogo extends StatelessWidget {
       return _fallback();
     }
 
-    return Container(
+    return SizedBox(
       height: size,
-      width: size,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: backgroundColor,
-        boxShadow: [BoxShadow(color: Colors.white, blurRadius: 4)],
-        border: Border.all(color: borderColor, width: borderWidth),
-      ),
+      width: 30,
+      // decoration: BoxDecoration(
+      //   shape: BoxShape.circle,
+      //   // color: backgroundColor,
+      //   // boxShadow: [BoxShadow(color: Colors.white, blurRadius: 4)],
+      //   // border: Border.all(color: borderColor, width: borderWidth),
+      // ),
       child: ClipOval(child: Image.asset(assetPath, fit: BoxFit.contain)),
     );
   }

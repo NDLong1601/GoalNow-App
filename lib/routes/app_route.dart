@@ -12,6 +12,7 @@ import 'package:goalnow_app/screen/profile/edit_email_screen.dart';
 import 'package:goalnow_app/screen/profile/edit_name_screen.dart';
 import 'package:goalnow_app/screen/profile/profile_screen.dart';
 import 'package:goalnow_app/screen/setting/setting_screen.dart';
+import 'package:goalnow_app/screen/top_player/top_player_screen.dart';
 import 'package:goalnow_app/screen/transfer/transfer_screen.dart';
 
 class AppRoute {
@@ -37,7 +38,7 @@ class AppRoute {
 
   static const String transfers = '/transfers';
   static const String standings = '/standings';
-  static const String player = '/player';
+  static const String topPlayer = '/top-player';
   static const String leagues = '/leagues';
   static const String friends = '/friends';
 
@@ -58,7 +59,8 @@ class AppRoute {
     AppRoute.changePass: (context) => const ChangePasswordScreen(),
 
     AppRoute.matchs: (context) => const MatchsScreen(),
-
+    
     AppRoute.transfers: (context) => const TransferScreen(),
+    AppRoute.topPlayer: (context) => const TopPlayerScreen(),
   };
 }

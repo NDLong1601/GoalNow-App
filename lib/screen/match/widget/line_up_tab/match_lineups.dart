@@ -16,16 +16,26 @@ class MatchLineups extends StatefulWidget {
 
 class _MatchLineupsState extends State<MatchLineups> {
   bool _loaded = false;
+  late LineupProvider _lineupProvider;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+
+    _lineupProvider = context.read<LineupProvider>();
+
     if (_loaded) return;
     _loaded = true;
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      context.read<LineupProvider>().load(widget.eventId);
+      _lineupProvider.load(widget.eventId);
     });
+  }
+
+  @override
+  void dispose() {
+    _lineupProvider.clear();
+    super.dispose();
   }
 
   @override
@@ -57,15 +67,15 @@ class _MatchLineupsState extends State<MatchLineups> {
             Row(
               children: [
                 Icon(Icons.stacked_bar_chart, color: AppColor.iconPrimary),
-                SizedBox(width: 4),
+                const SizedBox(width: 4),
                 AppText(
                   text: '${lineup.name} · ${lineup.formation}',
-                  style: AppTextStyle.h3.copyWith(
+                  style: AppTextStyle.bodySmall.copyWith(
                     fontWeight: FontWeight.w600,
                     color: AppColor.white.withValues(alpha: 0.85),
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 IconButton(
                   tooltip: 'Swap team',
                   onPressed: () {
@@ -93,7 +103,6 @@ class _MatchLineupsState extends State<MatchLineups> {
               )
             else
               LineupPitch(players: lineup.starters, flip: isAway),
-              
           ],
         );
       },

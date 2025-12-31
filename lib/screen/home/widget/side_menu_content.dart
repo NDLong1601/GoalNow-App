@@ -50,7 +50,7 @@ class SideMenuContent extends StatelessWidget {
             ),
             MenuItem(
               title: 'Player',
-              // onTap: () => _goTo(context, AppRoute.player),
+              onTap: () => _goTo(context, AppRoute.topPlayer),
             ),
             MenuItem(
               title: 'Leagues',
@@ -66,7 +66,6 @@ class SideMenuContent extends StatelessWidget {
     );
   }
 }
-
 
 class MenuItem extends StatelessWidget {
   final String title;
