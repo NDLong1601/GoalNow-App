@@ -1,4 +1,4 @@
-import 'package:goalnow_app/model/news.dart';
+import 'package:goalnow_app/model/new/news.dart';
 import 'package:flutter/material.dart';
 import 'package:goalnow_app/service/api/news_service.dart';
 

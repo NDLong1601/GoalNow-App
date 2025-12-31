@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:goalnow_app/model/news.dart';
+import 'package:goalnow_app/model/new/news.dart';
 import '../repository/news_repository.dart';
 
 class NewsProvider extends ChangeNotifier {

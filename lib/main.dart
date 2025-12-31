@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:goalnow_app/core/network/api_client.dart';
+import 'package:goalnow_app/model/player/top_player_local_model.dart';
 import 'package:goalnow_app/provider/highlight_provider.dart';
 import 'package:goalnow_app/provider/lineup_provider.dart';
 import 'package:goalnow_app/provider/match_provider.dart';
@@ -31,6 +32,7 @@ Future<void> main() async {
   // Hive Init
   await Hive.initFlutter();
   Hive.registerAdapter(TransferLocalModelAdapter());
+  Hive.registerAdapter(TopPlayerLocalModelAdapter());
 
   // Local Service Init
   final localService = LocalService();
