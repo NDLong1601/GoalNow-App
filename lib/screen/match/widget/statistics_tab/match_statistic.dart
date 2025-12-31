@@ -12,13 +12,14 @@ class MatchStatistic extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<MatchStatsProvider>(
       builder: (context, provider, _) {
+        // Loading
         if (provider.loading) {
           return const Padding(
             padding: EdgeInsets.symmetric(vertical: 24),
             child: Center(child: CircularProgressIndicator()),
           );
         }
-
+        // Error
         if (provider.error != null) {
           return Padding(
             padding: const EdgeInsets.symmetric(vertical: 24),
@@ -28,9 +29,13 @@ class MatchStatistic extends StatelessWidget {
             ),
           );
         }
+        // No statistics
+        if (provider.sections.isEmpty) {
+          return const Center(child: Text('No statistics available'));
+        }
 
         return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: provider.sections.map((section) {
             final bool openByDefault = section.key == 'top_stats';
             return MatchStatSectionExpandable(

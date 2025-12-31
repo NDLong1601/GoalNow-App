@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:goalnow_app/core/network/api_client.dart';
 import 'package:goalnow_app/provider/highlight_provider.dart';
+import 'package:goalnow_app/provider/lineup_provider.dart';
 import 'package:goalnow_app/provider/match_provider.dart';
+import 'package:goalnow_app/provider/match_stats_provider.dart';
 import 'package:goalnow_app/provider/news_provider.dart';
 import 'package:goalnow_app/provider/transfer_provider.dart';
 import 'package:goalnow_app/provider/user_provider.dart';
+import 'package:goalnow_app/repository/lineup_repository.dart';
 import 'package:goalnow_app/repository/match_repository.dart';
+import 'package:goalnow_app/repository/match_stats_repository.dart';
 import 'package:goalnow_app/repository/news_repository.dart';
 import 'package:goalnow_app/repository/transfer_repository.dart';
 import 'package:goalnow_app/repository/youtube_repository.dart';
 import 'package:goalnow_app/routes/app_route.dart';
+import 'package:goalnow_app/service/api/lineup_service.dart';
 import 'package:goalnow_app/service/api/match_service.dart';
 import 'package:goalnow_app/service/api/news_service.dart';
+import 'package:goalnow_app/service/api/stats_service.dart';
 import 'package:goalnow_app/service/api/transfer_service.dart';
 import 'package:goalnow_app/service/api/youtube_service.dart';
 import 'package:goalnow_app/service/local/local_service.dart';
@@ -44,6 +50,8 @@ Future<void> main() async {
         Provider(create: (c) => MatchService(c.read<ApiClient>())),
         Provider(create: (c) => TransferService(c.read<ApiClient>())),
         Provider(create: (c) => YouTubeService()),
+        Provider(create: (c) => LineupService(c.read<ApiClient>())),
+        Provider(create: (c) => MatchStatsService(c.read<ApiClient>())),
 
         /// Repositories
         Provider(create: (c) => NewsRepository(c.read<NewsService>())),
@@ -56,6 +64,10 @@ Future<void> main() async {
         ),
         Provider(
           create: (c) => YouTubeRepository(service: c.read<YouTubeService>()),
+        ),
+        Provider(create: (c) => LineupRepository(c.read<LineupService>())),
+        Provider(
+          create: (c) => MatchStatsRepository(c.read<MatchStatsService>()),
         ),
 
         /// Providers
@@ -71,6 +83,12 @@ Future<void> main() async {
         ChangeNotifierProvider(
           create: (c) =>
               HighlightProvider(repository: c.read<YouTubeRepository>()),
+        ),
+        ChangeNotifierProvider(
+          create: (c) => MatchStatsProvider(c.read<MatchStatsRepository>()),
+        ),
+        ChangeNotifierProvider(
+          create: (c) => LineupProvider(c.read<LineupRepository>()),
         ),
         ChangeNotifierProvider(create: (_) => UserProvider()),
       ],
@@ -88,7 +106,7 @@ class MyApp extends StatelessWidget {
       title: 'GoalNow',
       darkTheme: ThemeData.dark(),
       theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
-      initialRoute: AppRoute.signIn,
+      initialRoute: AppRoute.bottomTab,
       routes: AppRoute().routes,
     );
   }

@@ -72,4 +72,13 @@ class LineupProvider extends ChangeNotifier {
       ),
     );
   }
+
+  // Xóa dữ liệu khi không cần thiết
+  void clear() {
+    home = null;
+    away = null;
+    loading = false;
+    error = null;
+    // notifyListeners();
+  }
 }

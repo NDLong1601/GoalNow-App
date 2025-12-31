@@ -13,7 +13,6 @@ class LineupPlayer {
     required this.shirtNumber,
     required this.verticalLayout,
     this.isCaptain = false,
-    
   });
 
   factory LineupPlayer.fromJson(Map<String, dynamic> json) {

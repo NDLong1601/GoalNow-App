@@ -9,7 +9,6 @@ import 'package:goalnow_app/model/match/match.dart';
 import 'package:goalnow_app/provider/lineup_provider.dart';
 import 'package:goalnow_app/provider/match_stats_provider.dart';
 import 'package:goalnow_app/repository/lineup_repository.dart';
-import 'package:goalnow_app/repository/match_stats_repository.dart';
 import 'package:goalnow_app/screen/match/widget/match_detail/match_detail_header.dart';
 import 'package:goalnow_app/screen/match/widget/line_up_tab/match_lineups.dart';
 import 'package:goalnow_app/screen/match/widget/match_detail/match_status.dart';
@@ -28,6 +27,18 @@ class MatchDetailScreen extends StatefulWidget {
 
 class _MatchDetailScreenState extends State<MatchDetailScreen> {
   MatchDetailTab _tab = MatchDetailTab.statistics;
+  bool _statsLoaded = false;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (_statsLoaded) return;
+    _statsLoaded = true;
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<MatchStatsProvider>().fetchStats(widget.match.id);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,14 +71,9 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
               index: _tab.index,
               children: [
                 // Statistics
-                ChangeNotifierProvider(
-                  create: (context) =>
-                      MatchStatsProvider(context.read<MatchStatsRepository>())
-                        ..fetchStats(match.id),
-                  child: ListView(
-                    padding: const EdgeInsets.fromLTRB(16, 4, 16, 16),
-                    children: const [MatchStatistic()],
-                  ),
+                ListView(
+                  padding: const EdgeInsets.fromLTRB(16, 4, 16, 16),
+                  children: [MatchStatistic()],
                 ),
 
                 // Lineups
