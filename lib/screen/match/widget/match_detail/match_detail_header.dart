@@ -45,11 +45,7 @@ class MatchDetailHeader extends StatelessWidget {
             ? CrossAxisAlignment.end
             : CrossAxisAlignment.start,
         children: [
-          TeamLogo(
-            assetPath: LogoIconMapper.getLogo(name) ?? '',
-            size: 44,
-            borderWidth: 1.5,
-          ),
+          TeamLogo(assetPath: LogoIconMapper.getLogo(name) ?? '', size: 44),
           const SizedBox(height: 8),
           AppText(
             text: name,

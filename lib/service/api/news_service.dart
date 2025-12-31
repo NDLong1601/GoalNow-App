@@ -1,6 +1,6 @@
 import 'package:goalnow_app/core/network/api_client.dart';
 import 'package:goalnow_app/core/network/api_endpoint.dart';
-import 'package:goalnow_app/model/new/news.dart';
+import 'package:goalnow_app/model/news.dart';
 
 class NewsService {
   final ApiClient _client;

@@ -24,7 +24,8 @@ class TransferCardContent extends StatelessWidget {
               clipBehavior: Clip.none,
               children: [
                 Hero(
-                  tag: 'player_${transfer.playerId}',
+                  tag:
+                      'player_${transfer.playerId}_${transfer.fromClub}_${transfer.toClub}',
                   child: PlayerAvatar(
                     playerKey: transfer.playerId.toString(),
                     clubName: transfer.toClub,

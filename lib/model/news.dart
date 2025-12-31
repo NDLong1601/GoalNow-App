@@ -1,27 +1,12 @@
-import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'news.g.dart';
-
-@HiveType(typeId: 0)
 @JsonSerializable()
 class NewsModel {
-  @HiveField(0)
   final String id;
-
-  @HiveField(1)
   final String title;
-
-  @HiveField(2)
   final String imageUrl;
-
-  @HiveField(3)
   final DateTime time;
-
-  @HiveField(4)
   final String source;
-
-  @HiveField(5)
   final String detailPath;
 
   NewsModel({
@@ -33,8 +18,14 @@ class NewsModel {
     required this.detailPath,
   });
 
-  factory NewsModel.fromJson(Map<String, dynamic> json) =>
-      _$NewsModelFromJson(json);
-
-  Map<String, dynamic> toJson() => _$NewsModelToJson(this);
+  factory NewsModel.fromJson(Map<String, dynamic> json) {
+    return NewsModel(
+      id: json['id'],
+      title: json['title'],
+      imageUrl: json['imageUrl'],
+      time: DateTime.parse(json['gmtTime']),
+      source: json['sourceStr'],
+      detailPath: json['page']['url'],
+    );
+  }
 }

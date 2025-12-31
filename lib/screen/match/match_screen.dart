@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:goalnow_app/core/data/data.dart';
 import 'package:provider/provider.dart';
 
 import 'package:goalnow_app/core/enum/enum.dart';
@@ -24,31 +25,6 @@ class _MatchsScreenState extends State<MatchsScreen> {
   bool _loaded = false;
 
   DateTime _selectedDate = DateTime.now();
-
-  /// League config
-  static const Map<int, String> _leagueNameMap = {
-    894202: 'UEFA Champions League',
-    47: 'Premier League',
-    87: 'La Liga',
-    77: 'World Cup',
-    54: 'Bundesliga',
-    73: 'Europa League',
-    53: 'Ligue 1',
-    55: 'Serie A',
-    132: 'Fa Cup',
-  };
-
-  static const Map<int, int> _leaguePriority = {
-    47: 0, // Premier League
-    87: 1, // La Liga
-    894202: 2, // Champions League
-    77: 3,
-    54: 4,
-    73: 5,
-    53: 6,
-    55: 7,
-    132: 8,
-  };
 
   @override
   void didChangeDependencies() {
@@ -98,8 +74,8 @@ class _MatchsScreenState extends State<MatchsScreen> {
                 return MatchListView(
                   tab: _currentTab,
                   matches: provider.matches,
-                  leagueNameMap: _leagueNameMap,
-                  leaguePriority: _leaguePriority,
+                  leagueNameMap: Data.leagueNameMap,
+                  leaguePriority: Data.leaguePriority,
                 );
               },
             ),

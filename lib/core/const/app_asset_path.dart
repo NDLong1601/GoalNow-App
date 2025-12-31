@@ -35,25 +35,48 @@ class AppAssetsPath {
   static const String avatarDefault = 'assets/images/img_avatar_default.png';
   static const String avatarDefault1 = 'assets/images/img_avatar_default_1.png';
 
-  // Image Logo
-  static const String arsenal = 'assets/images/logo-arsenal.png';
-  static const String chelsea = 'assets/images/logo-chelsea.png';
-  static const String wolverhampton = 'assets/images/logo_wolverhamton.png';
-  static const String westHam = 'assets/images/logo_westham.png';
-  static const String tottenham = 'assets/images/logo_tottenham.png';
-  static const String sunderland = 'assets/images/logo_sunderland.png';
-  static const String nottinghamForest = 'assets/images/logo_nottingham.png';
-  static const String newcastle = 'assets/images/logo_newcastle.png';
-  static const String manchesterCity = 'assets/images/logo_mci.png';
-  static const String manchesterUnited = 'assets/images/logo_man_utd.png';
-  static const String liverpool = 'assets/images/logo_liverpool.png';
-  static const String leedsUnited = 'assets/images/logo_leeds.png';
-  static const String fulham = 'assets/images/logo_fullham.png';
-  static const String everton = 'assets/images/logo_everton.png';
-  static const String crystalPalace = 'assets/images/logo_crystal_palace.png';
-  static const String burnley = 'assets/images/logo_burnley.png';
-  static const String brighton = 'assets/images/logo_brighton.png';
-  static const String brentford = 'assets/images/logo_brentford.png';
-  static const String bournemouth = 'assets/images/logo_bournemouth.png';
-  static const String astonVilla = 'assets/images/img_logo_astolvila.png';
+  /// ======= Image Logo =======
+  /// premier league
+  static const String arsenal = 'assets/images/img-arsenal.png';
+  static const String chelsea = 'assets/images/img-chelsea.png';
+  static const String wolverhampton = 'assets/images/img_wolverhampton.png';
+  static const String westHam = 'assets/images/img_westham.png';
+  static const String tottenham = 'assets/images/img_tottenham.jpg';
+  static const String sunderland = 'assets/images/img_sunderland.png';
+  static const String nottinghamForest = 'assets/images/img_nottingham.png';
+  static const String newcastle = 'assets/images/img_newcastle.png';
+  static const String manchesterCity = 'assets/images/img_mci.png';
+  static const String manchesterUnited = 'assets/images/img_man_utd.png';
+  static const String liverpool = 'assets/images/img_liverpool.png';
+  static const String leedsUnited = 'assets/images/img_leeds.png';
+  static const String fulham = 'assets/images/img_fulham.png';
+  static const String everton = 'assets/images/img_everton.png';
+  static const String crystalPalace = 'assets/images/img_crystal_palace.png';
+  static const String burnley = 'assets/images/img_burnley.png';
+  static const String brighton = 'assets/images/img_brighton.png';
+  static const String brentford = 'assets/images/img_brentford.png';
+  static const String bournemouth = 'assets/images/img_bournemouth.png';
+  static const String astonVilla = 'assets/images/img_aston_villa.png';
+
+  /// Laliga
+  static const String alaves = 'assets/images/img_alaves.png';
+  static const String athleticBibao = 'assets/images/img_athletic_bibao.png';
+  static const String atleticoMadrid = 'assets/images/img_atletico_madrid.png';
+  static const String barcelona = 'assets/images/img_barcelona.png';
+  static const String betis = 'assets/images/img_betis.png';
+  static const String celta = 'assets/images/img_celta.png';
+  static const String elche = 'assets/images/img_elche.png';
+  static const String espanyol = 'assets/images/img_espanyol.png';
+  static const String getafe = 'assets/images/img_getafe.png';
+  static const String girona = 'assets/images/img_girona.png';
+  static const String levante = 'assets/images/img_levante.png';
+  static const String mallorca = 'assets/images/img_mallorca.png';
+  static const String osasuna = 'assets/images/img_osasuna.png';
+  static const String rayo = 'assets/images/img_rayo.png';
+  static const String realMadrid = 'assets/images/img_real_madrid.png';
+  static const String realOviedo = 'assets/images/img_real_oviedo.png';
+  static const String realSociedad = 'assets/images/img_real_sociedad.png';
+  static const String sevilla = 'assets/images/img_sevilla.png';
+  static const String valencia = 'assets/images/img_valencia.png';
+  static const String villarreal = 'assets/images/img_villarreal.png';
 }
