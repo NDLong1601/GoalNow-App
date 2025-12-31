@@ -18,3 +18,7 @@ enum LineupSide { home, away }
 
 /// Transfer sorting options
 enum TransferSort { none, valueAsc, valueDesc }
+
+/// Rating
+enum RatingSide { home, away }
+

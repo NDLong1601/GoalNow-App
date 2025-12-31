@@ -34,8 +34,7 @@ class MatchStatistic extends StatelessWidget {
           return const Center(child: Text('No statistics available'));
         }
 
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
+        return ListView(
           children: provider.sections.map((section) {
             final bool openByDefault = section.key == 'top_stats';
             return MatchStatSectionExpandable(
